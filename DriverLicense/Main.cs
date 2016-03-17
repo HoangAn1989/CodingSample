@@ -47,10 +47,13 @@ namespace DriverLicense
             _count++;
             tbQuestion.Text = getQuestion(getIdQuestion);
             string answer1 = getAnswer_1(getIdQuestion);
+            int flag1 = flagAnswer_1(getIdQuestion);
             rdbAnswer1.Text = answer1;
             string answer2 = getAnswer_2(getIdQuestion);
+            int flag2 = flagAnswer_2(getIdQuestion);
             rdbAnswer2.Text = answer2;
             string answer3 = getAnswer_3(getIdQuestion);
+            int flag3 = flagAnswer_3(getIdQuestion);
             rdbAnswer3.Text = answer3;
         }      
         
@@ -108,6 +111,20 @@ namespace DriverLicense
             return answer;
         }
 
+        private int flagAnswer_1(int id)
+        {
+            cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
+            int flag;
+            SqlCommand command = new SqlCommand();
+            command.CommandText = "Select FLAG from ANSWER_1 where IDQUESTION = @id";
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("@id", id);
+            command.Connection = cnn;
+            cnn.Open();
+            flag = (int) command.ExecuteScalar();
+            return flag;
+        }
+
         private String getAnswer_2(int id)
         {
             cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
@@ -122,6 +139,20 @@ namespace DriverLicense
             return answer;
         }
 
+        private int flagAnswer_2(int id)
+        {
+            cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
+            int flag;
+            SqlCommand command = new SqlCommand();
+            command.CommandText = "Select FLAG from ANSWER_2 where IDQUESTION = @id";
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("@id", id);
+            command.Connection = cnn;
+            cnn.Open();
+            flag = (int) command.ExecuteScalar();
+            return flag;
+        }
+
         private String getAnswer_3(int id)
         {
             cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
@@ -134,7 +165,46 @@ namespace DriverLicense
             cnn.Open();
             answer = command.ExecuteScalar().ToString();
             return answer;
-        }       
+        }
+
+        private int flagAnswer_3(int id)
+        {
+            cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
+            int flag;
+            SqlCommand command = new SqlCommand();
+            command.CommandText = "Select FLAG from ANSWER_3 where IDQUESTION = @id";
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("@id", id);
+            command.Connection = cnn;
+            cnn.Open();
+            flag = (int) command.ExecuteScalar();
+            return flag;
+        }
+       
+        private string getRightAnswer(int id)
+        {
+            string rightanswer = "";
+            string answer1 = getAnswer_1(id);
+            int flag1 = flagAnswer_1(id);
+            string answer2 = getAnswer_2(id);
+            int flag2 = flagAnswer_2(id);
+            string answer3 = getAnswer_3(id);
+            int flag3 = flagAnswer_3(id);
+            if(flag1 == 1)
+            {
+                rightanswer = answer1;
+
+            }
+            else if(flag2 == 1)
+            {
+                rightanswer = answer2;
+            }
+            else if(flag3 == 1)
+            {
+                rightanswer = answer3;
+            }
+            return rightanswer;
+        }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -145,10 +215,13 @@ namespace DriverLicense
                 _count++;
                 tbQuestion.Text = getQuestion(getIdQuestion);
                 string answer1 = getAnswer_1(getIdQuestion);
+                int flag1 = flagAnswer_1(getIdQuestion);
                 rdbAnswer1.Text = answer1;
                 string answer2 = getAnswer_2(getIdQuestion);
+                int flag2 = flagAnswer_2(getIdQuestion);
                 rdbAnswer2.Text = answer2;
                 string answer3 = getAnswer_3(getIdQuestion);
+                int flag3 = flagAnswer_3(getIdQuestion);
                 rdbAnswer3.Text = answer3;
             }
             else if(_count == 25)
