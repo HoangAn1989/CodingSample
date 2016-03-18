@@ -18,16 +18,29 @@ namespace DriverLicense
         SqlDataAdapter adapter;
         DataTable table = new DataTable();
         public static Random _Random = new Random();
-        public ArrayList questionList;
-        public ArrayList realTest;
+        public ArrayList idQuestionList;
+        public ArrayList realTestList;
         public int _count = 0;
+        public static int amountQuestion = 25;
         public int totalRightAnswer = 0;
+
+        public int idQuestion = 0;
+        public string answer1, answer2, answer3 = "";
+        public int flag1, flag2, flag3 = 0;
+
+        //result
+        public ArrayList contentQuestionList = new ArrayList(amountQuestion);
+        public ArrayList contetnRightAnswerList = new ArrayList(amountQuestion);
+        public ArrayList contentWrongAnserList = new ArrayList(amountQuestion);
+
+        //combobox
+        public int indexCombobox = 0;
+
         public Main()
         {
             InitializeComponent();
             cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
-            cnn.Open();
-            
+            cnn.Open();            
         }
         private void connect()
         {
@@ -37,25 +50,15 @@ namespace DriverLicense
 
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            int getIdQuestion;
+        {            
             pnTest.Visible = true;
             btnStart.Visible = false;
             btnNext.Visible = true;
             llbSkip.Visible = true;
             getAllQuestion();
-            getIdQuestion = (int) realTest[_count];
-            _count++;
-            tbQuestion.Text = getQuestion(getIdQuestion);
-            string answer1 = getAnswer_1(getIdQuestion);
-            int flag1 = flagAnswer_1(getIdQuestion);
-            rdbAnswer1.Text = answer1;
-            string answer2 = getAnswer_2(getIdQuestion);
-            int flag2 = flagAnswer_2(getIdQuestion);
-            rdbAnswer2.Text = answer2;
-            string answer3 = getAnswer_3(getIdQuestion);
-            int flag3 = flagAnswer_3(getIdQuestion);
-            rdbAnswer3.Text = answer3;
+            cbbNumber.SelectedIndex = 0;
+            displayContent();
+            // - 1;
         }      
         
 
@@ -66,21 +69,22 @@ namespace DriverLicense
             DataTable table = new DataTable();
             adapter.Fill(table);
             int countRow = table.Rows.Count;
-            questionList = new ArrayList(countRow);
+            idQuestionList = new ArrayList(countRow);
             for(int i=0; i<countRow; i++)
             {                
-                questionList.Add(table.Rows[i][0]);
+                idQuestionList.Add(table.Rows[i][0]);
                 
             }
-            
-            realTest = new ArrayList(25);
+
+            realTestList = new ArrayList(amountQuestion);
             int getID;
             for(int j=0; j<25; j++)
             {
-                int numberRandom = _Random.Next(questionList.Count);
-                getID = (int)questionList[numberRandom];
-                realTest.Add(getID);
-                //questionList.Remove(numberRandom);
+                int numberRandom = _Random.Next(idQuestionList.Count);
+                getID = (int)idQuestionList[numberRandom];
+                realTestList.Add(getID);
+                idQuestionList.Remove(numberRandom);
+                cbbNumber.Items.Add(j+1);
             }
         }
 
@@ -185,52 +189,178 @@ namespace DriverLicense
         private string getRightAnswer(int id)
         {
             string rightanswer = "";
-            string answer1 = getAnswer_1(id);
-            int flag1 = flagAnswer_1(id);
-            string answer2 = getAnswer_2(id);
-            int flag2 = flagAnswer_2(id);
-            string answer3 = getAnswer_3(id);
-            int flag3 = flagAnswer_3(id);
-            if(flag1 == 1)
+            string _answer1 = getAnswer_1(id);
+            int _flag1 = flagAnswer_1(id);
+            string _answer2 = getAnswer_2(id);
+            int _flag2 = flagAnswer_2(id);
+            string _answer3 = getAnswer_3(id);
+            int _flag3 = flagAnswer_3(id);
+            if(_flag1 == 1)
             {
-                rightanswer = answer1;                
+                rightanswer = _answer1;                
             }
-            else if(flag2 == 1)
+            else if(_flag2 == 1)
             {
-                rightanswer = answer2;
+                rightanswer = _answer2;
             }
-            else if(flag3 == 1)
+            else if(_flag3 == 1)
             {
-                rightanswer = answer3;
+                rightanswer = _answer3;
             }
             return rightanswer;
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
+        private void displayContent()
         {
+            _count = cbbNumber.SelectedIndex;
+            idQuestion = (int)realTestList[_count];
+            _count++;
+
+            tbQuestion.Text = getQuestion(idQuestion);
+            //contentQuestionList.Add(tbQuestion.Text);
+            answer1 = getAnswer_1(idQuestion);
+            flag1 = flagAnswer_1(idQuestion);
+            rdbAnswer1.Text = answer1;
+            answer2 = getAnswer_2(idQuestion);
+            flag2 = flagAnswer_2(idQuestion);
+            rdbAnswer2.Text = answer2;
+            answer3 = getAnswer_3(idQuestion);
+            flag3 = flagAnswer_3(idQuestion);
+            rdbAnswer3.Text = answer3;
+        }
+
+        private void processNextClick()
+        {
+            string rightAnswer = getRightAnswer(idQuestion);
+            //contetnRightAnswerList.Add(rightAnswer);
+            
+            if (rdbAnswer1.Checked == true)
+            {
+                //contentWrongAnserList.Add(rdbAnswer1.Text);
+                //cbbNumber.SelectedIndex = _count;
+                if (flag1 == 1)
+                {
+                    totalRightAnswer++;
+                    displayContent();
+                }
+                else
+                {
+                    displayContent();
+                }
+                //cbbNumber.SelectedIndex = _count - 1;
+            }
+            else if (rdbAnswer2.Checked == true)
+            {
+                //contentWrongAnserList.Add(rdbAnswer2.Text);
+                if (flag2 == 1)
+                {
+                    totalRightAnswer++;
+                    displayContent();
+                }
+                else
+                {
+                    displayContent();
+                }
+                //cbbNumber.SelectedIndex = _count - 1;
+            }
+            else if (rdbAnswer3.Checked == true)
+            {
+                //contentWrongAnserList.Add(rdbAnswer2.Text);
+                if (flag2 == 1)
+                {
+                    totalRightAnswer++;
+                    displayContent();
+                }
+                else
+                {
+                    displayContent();
+                }
+                //cbbNumber.SelectedIndex = _count - 1;
+            }
+            else
+            {
+                cbbNumber.SelectedIndex = _count;
+                displayContent();
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {            
             if(_count < 25)
             {
-                int getIdQuestion;
-                
-                getIdQuestion = (int)realTest[_count];
-                _count++;
-                tbQuestion.Text = getQuestion(getIdQuestion);
-                string answer1 = getAnswer_1(getIdQuestion);
-                int flag1 = flagAnswer_1(getIdQuestion);
-                rdbAnswer1.Text = answer1;
-                string answer2 = getAnswer_2(getIdQuestion);
-                int flag2 = flagAnswer_2(getIdQuestion);
-                rdbAnswer2.Text = answer2;
-                string answer3 = getAnswer_3(getIdQuestion);
-                int flag3 = flagAnswer_3(getIdQuestion);
-                rdbAnswer3.Text = answer3;
+                processNextClick();                
             }
             else if(_count == 25)
             {
+                processNextClick();
                 pnTest.Visible = false;
+                tbQuestion.Text = "";
+                rdbAnswer1.Text = "";
+                rdbAnswer2.Text = "";
+                rdbAnswer3.Text = "";
                 btnNext.Visible = false;
                 llbSkip.Visible = false;
             }
+            rdbAnswer1.Checked = false;
+            rdbAnswer2.Checked = false;
+            rdbAnswer3.Checked = false;
+        }
+
+        private void llbSkip_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {            
+            if (_count < 25)
+            {
+                string rightAnswer = getRightAnswer(idQuestion);
+                //contetnRightAnswerList.Add(rightAnswer);
+                //contentWrongAnserList.Add("");
+                //cbbNumber.SelectedIndex = _count;
+                displayContent();
+                
+                if (_count == 25)
+                {
+                    llbSkip.Visible = false;
+                }
+            }
+            else if (_count == 25)
+            {                
+                pnTest.Visible = false;
+                tbQuestion.Text = "";
+                rdbAnswer1.Text = "";
+                rdbAnswer2.Text = "";
+                rdbAnswer3.Text = "";
+                btnNext.Visible = false;
+                llbSkip.Visible = false;
+            }
+            rdbAnswer1.Checked = false;
+            rdbAnswer2.Checked = false;
+            rdbAnswer3.Checked = false;
+        }
+
+        private void cbbNumber_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+                indexCombobox = cbbNumber.SelectedIndex;
+
+                idQuestion = (int)realTestList[indexCombobox];
+                //_count = indexCombobox + 1;
+
+                tbQuestion.Text = getQuestion(idQuestion);
+                //contentQuestionList.Add(tbQuestion.Text);
+                answer1 = getAnswer_1(idQuestion);
+                flag1 = flagAnswer_1(idQuestion);
+                rdbAnswer1.Text = answer1;
+                answer2 = getAnswer_2(idQuestion);
+                flag2 = flagAnswer_2(idQuestion);
+                rdbAnswer2.Text = answer2;
+                answer3 = getAnswer_3(idQuestion);
+                flag3 = flagAnswer_3(idQuestion);
+                rdbAnswer3.Text = answer3;
+            
+        }
+
+        private void cbbNumber_SelectedValueChanged(object sender, EventArgs e)
+        {
+            _count = cbbNumber.SelectedIndex;  
         }
         
     }

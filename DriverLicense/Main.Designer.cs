@@ -40,13 +40,15 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnTest = new System.Windows.Forms.Panel();
+            this.rdbAnswer3 = new System.Windows.Forms.RadioButton();
+            this.rdbAnswer2 = new System.Windows.Forms.RadioButton();
             this.rdbAnswer1 = new System.Windows.Forms.RadioButton();
             this.tbQuestion = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.llbSkip = new System.Windows.Forms.LinkLabel();
-            this.rdbAnswer2 = new System.Windows.Forms.RadioButton();
-            this.rdbAnswer3 = new System.Windows.Forms.RadioButton();
+            this.lbl = new System.Windows.Forms.Label();
+            this.cbbNumber = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.pnTest.SuspendLayout();
             this.SuspendLayout();
@@ -138,6 +140,8 @@
             // 
             // pnTest
             // 
+            this.pnTest.Controls.Add(this.cbbNumber);
+            this.pnTest.Controls.Add(this.lbl);
             this.pnTest.Controls.Add(this.rdbAnswer3);
             this.pnTest.Controls.Add(this.rdbAnswer2);
             this.pnTest.Controls.Add(this.rdbAnswer1);
@@ -148,10 +152,32 @@
             this.pnTest.TabIndex = 4;
             this.pnTest.Visible = false;
             // 
+            // rdbAnswer3
+            // 
+            this.rdbAnswer3.AutoSize = true;
+            this.rdbAnswer3.Location = new System.Drawing.Point(62, 291);
+            this.rdbAnswer3.Name = "rdbAnswer3";
+            this.rdbAnswer3.Size = new System.Drawing.Size(85, 17);
+            this.rdbAnswer3.TabIndex = 2;
+            this.rdbAnswer3.TabStop = true;
+            this.rdbAnswer3.Text = "radioButton1";
+            this.rdbAnswer3.UseVisualStyleBackColor = true;
+            // 
+            // rdbAnswer2
+            // 
+            this.rdbAnswer2.AutoSize = true;
+            this.rdbAnswer2.Location = new System.Drawing.Point(62, 228);
+            this.rdbAnswer2.Name = "rdbAnswer2";
+            this.rdbAnswer2.Size = new System.Drawing.Size(85, 17);
+            this.rdbAnswer2.TabIndex = 2;
+            this.rdbAnswer2.TabStop = true;
+            this.rdbAnswer2.Text = "radioButton1";
+            this.rdbAnswer2.UseVisualStyleBackColor = true;
+            // 
             // rdbAnswer1
             // 
             this.rdbAnswer1.AutoSize = true;
-            this.rdbAnswer1.Location = new System.Drawing.Point(62, 140);
+            this.rdbAnswer1.Location = new System.Drawing.Point(62, 165);
             this.rdbAnswer1.Name = "rdbAnswer1";
             this.rdbAnswer1.Size = new System.Drawing.Size(85, 17);
             this.rdbAnswer1.TabIndex = 2;
@@ -164,7 +190,7 @@
             this.tbQuestion.BackColor = System.Drawing.SystemColors.MenuBar;
             this.tbQuestion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbQuestion.Location = new System.Drawing.Point(9, 13);
+            this.tbQuestion.Location = new System.Drawing.Point(9, 36);
             this.tbQuestion.Multiline = true;
             this.tbQuestion.Name = "tbQuestion";
             this.tbQuestion.ReadOnly = true;
@@ -209,28 +235,29 @@
             this.llbSkip.TabStop = true;
             this.llbSkip.Text = "Skip  >>";
             this.llbSkip.Visible = false;
+            this.llbSkip.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbSkip_LinkClicked);
             // 
-            // rdbAnswer2
+            // lbl
             // 
-            this.rdbAnswer2.AutoSize = true;
-            this.rdbAnswer2.Location = new System.Drawing.Point(62, 206);
-            this.rdbAnswer2.Name = "rdbAnswer2";
-            this.rdbAnswer2.Size = new System.Drawing.Size(85, 17);
-            this.rdbAnswer2.TabIndex = 2;
-            this.rdbAnswer2.TabStop = true;
-            this.rdbAnswer2.Text = "radioButton1";
-            this.rdbAnswer2.UseVisualStyleBackColor = true;
+            this.lbl.AutoSize = true;
+            this.lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl.Location = new System.Drawing.Point(378, 10);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(103, 17);
+            this.lbl.TabIndex = 7;
+            this.lbl.Text = "QUESTION : ";
             // 
-            // rdbAnswer3
+            // cbbNumber
             // 
-            this.rdbAnswer3.AutoSize = true;
-            this.rdbAnswer3.Location = new System.Drawing.Point(62, 277);
-            this.rdbAnswer3.Name = "rdbAnswer3";
-            this.rdbAnswer3.Size = new System.Drawing.Size(85, 17);
-            this.rdbAnswer3.TabIndex = 2;
-            this.rdbAnswer3.TabStop = true;
-            this.rdbAnswer3.Text = "radioButton1";
-            this.rdbAnswer3.UseVisualStyleBackColor = true;
+            this.cbbNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbNumber.FormattingEnabled = true;
+            this.cbbNumber.Location = new System.Drawing.Point(478, 6);
+            this.cbbNumber.Name = "cbbNumber";
+            this.cbbNumber.Size = new System.Drawing.Size(45, 24);
+            this.cbbNumber.TabIndex = 9;
+            this.cbbNumber.SelectedIndexChanged += new System.EventHandler(this.cbbNumber_SelectedIndexChanged);
+            this.cbbNumber.SelectedValueChanged += new System.EventHandler(this.cbbNumber_SelectedValueChanged);
             // 
             // Main
             // 
@@ -277,6 +304,8 @@
         private System.Windows.Forms.LinkLabel llbSkip;
         private System.Windows.Forms.RadioButton rdbAnswer3;
         private System.Windows.Forms.RadioButton rdbAnswer2;
+        private System.Windows.Forms.Label lbl;
+        private System.Windows.Forms.ComboBox cbbNumber;
     }
 }
 
