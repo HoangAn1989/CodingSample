@@ -21,6 +21,7 @@ namespace DriverLicense
         public ArrayList questionList;
         public ArrayList realTest;
         public int _count = 0;
+        public int totalRightAnswer = 0;
         public Main()
         {
             InitializeComponent();
@@ -192,8 +193,7 @@ namespace DriverLicense
             int flag3 = flagAnswer_3(id);
             if(flag1 == 1)
             {
-                rightanswer = answer1;
-
+                rightanswer = answer1;                
             }
             else if(flag2 == 1)
             {
@@ -211,6 +211,7 @@ namespace DriverLicense
             if(_count < 25)
             {
                 int getIdQuestion;
+                
                 getIdQuestion = (int)realTest[_count];
                 _count++;
                 tbQuestion.Text = getQuestion(getIdQuestion);
