@@ -58,7 +58,7 @@ namespace DriverLicense
             getAllQuestion();
             cbbNumber.SelectedIndex = 0;
             displayContent();
-            // - 1;
+            
         }      
         
 
@@ -99,6 +99,7 @@ namespace DriverLicense
             command.Connection = cnn;
             cnn.Open();
             content = command.ExecuteScalar().ToString();
+            cnn.Close();
             return content;
         }
 
@@ -113,6 +114,7 @@ namespace DriverLicense
             command.Connection = cnn;
             cnn.Open();
             answer = command.ExecuteScalar().ToString();
+            cnn.Close();
             return answer;
         }
 
@@ -127,6 +129,7 @@ namespace DriverLicense
             command.Connection = cnn;
             cnn.Open();
             flag = (int) command.ExecuteScalar();
+            cnn.Close();
             return flag;
         }
 
@@ -141,6 +144,7 @@ namespace DriverLicense
             command.Connection = cnn;
             cnn.Open();
             answer = command.ExecuteScalar().ToString();
+            cnn.Close();
             return answer;
         }
 
@@ -155,6 +159,7 @@ namespace DriverLicense
             command.Connection = cnn;
             cnn.Open();
             flag = (int) command.ExecuteScalar();
+            cnn.Close();
             return flag;
         }
 
@@ -169,6 +174,7 @@ namespace DriverLicense
             command.Connection = cnn;
             cnn.Open();
             answer = command.ExecuteScalar().ToString();
+            cnn.Close();
             return answer;
         }
 
@@ -183,6 +189,7 @@ namespace DriverLicense
             command.Connection = cnn;
             cnn.Open();
             flag = (int) command.ExecuteScalar();
+            cnn.Close();
             return flag;
         }
        
@@ -236,8 +243,7 @@ namespace DriverLicense
             
             if (rdbAnswer1.Checked == true)
             {
-                //contentWrongAnserList.Add(rdbAnswer1.Text);
-                //cbbNumber.SelectedIndex = _count;
+                //contentWrongAnserList.Add(rdbAnswer1.Text);                
                 if (flag1 == 1)
                 {
                     totalRightAnswer++;
@@ -247,7 +253,7 @@ namespace DriverLicense
                 {
                     displayContent();
                 }
-                //cbbNumber.SelectedIndex = _count - 1;
+                
             }
             else if (rdbAnswer2.Checked == true)
             {
@@ -261,7 +267,7 @@ namespace DriverLicense
                 {
                     displayContent();
                 }
-                //cbbNumber.SelectedIndex = _count - 1;
+               
             }
             else if (rdbAnswer3.Checked == true)
             {
@@ -275,7 +281,7 @@ namespace DriverLicense
                 {
                     displayContent();
                 }
-                //cbbNumber.SelectedIndex = _count - 1;
+                
             }
             else
             {
@@ -310,10 +316,11 @@ namespace DriverLicense
         {            
             if (_count < 25)
             {
-                string rightAnswer = getRightAnswer(idQuestion);
+                //string rightAnswer = getRightAnswer(idQuestion);
                 //contetnRightAnswerList.Add(rightAnswer);
                 //contentWrongAnserList.Add("");
                 //cbbNumber.SelectedIndex = _count;
+                cbbNumber.SelectedIndex = _count;
                 displayContent();
                 
                 if (_count == 25)
@@ -342,7 +349,7 @@ namespace DriverLicense
                 indexCombobox = cbbNumber.SelectedIndex;
 
                 idQuestion = (int)realTestList[indexCombobox];
-                //_count = indexCombobox + 1;
+                _count = indexCombobox + 1;
 
                 tbQuestion.Text = getQuestion(idQuestion);
                 //contentQuestionList.Add(tbQuestion.Text);
@@ -356,12 +363,9 @@ namespace DriverLicense
                 flag3 = flagAnswer_3(idQuestion);
                 rdbAnswer3.Text = answer3;
             
-        }
+        }       
 
-        private void cbbNumber_SelectedValueChanged(object sender, EventArgs e)
-        {
-            _count = cbbNumber.SelectedIndex;  
-        }
+        
         
     }
 }

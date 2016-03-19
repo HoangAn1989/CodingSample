@@ -40,6 +40,8 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnTest = new System.Windows.Forms.Panel();
+            this.cbbNumber = new System.Windows.Forms.ComboBox();
+            this.lbl = new System.Windows.Forms.Label();
             this.rdbAnswer3 = new System.Windows.Forms.RadioButton();
             this.rdbAnswer2 = new System.Windows.Forms.RadioButton();
             this.rdbAnswer1 = new System.Windows.Forms.RadioButton();
@@ -47,8 +49,6 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.llbSkip = new System.Windows.Forms.LinkLabel();
-            this.lbl = new System.Windows.Forms.Label();
-            this.cbbNumber = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.pnTest.SuspendLayout();
             this.SuspendLayout();
@@ -152,6 +152,27 @@
             this.pnTest.TabIndex = 4;
             this.pnTest.Visible = false;
             // 
+            // cbbNumber
+            // 
+            this.cbbNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbNumber.FormattingEnabled = true;
+            this.cbbNumber.Location = new System.Drawing.Point(478, 6);
+            this.cbbNumber.Name = "cbbNumber";
+            this.cbbNumber.Size = new System.Drawing.Size(45, 24);
+            this.cbbNumber.TabIndex = 9;
+            this.cbbNumber.SelectedIndexChanged += new System.EventHandler(this.cbbNumber_SelectedIndexChanged);
+            // 
+            // lbl
+            // 
+            this.lbl.AutoSize = true;
+            this.lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl.Location = new System.Drawing.Point(378, 10);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(103, 17);
+            this.lbl.TabIndex = 7;
+            this.lbl.Text = "QUESTION : ";
+            // 
             // rdbAnswer3
             // 
             this.rdbAnswer3.AutoSize = true;
@@ -236,28 +257,6 @@
             this.llbSkip.Text = "Skip  >>";
             this.llbSkip.Visible = false;
             this.llbSkip.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbSkip_LinkClicked);
-            // 
-            // lbl
-            // 
-            this.lbl.AutoSize = true;
-            this.lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl.Location = new System.Drawing.Point(378, 10);
-            this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(103, 17);
-            this.lbl.TabIndex = 7;
-            this.lbl.Text = "QUESTION : ";
-            // 
-            // cbbNumber
-            // 
-            this.cbbNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbNumber.FormattingEnabled = true;
-            this.cbbNumber.Location = new System.Drawing.Point(478, 6);
-            this.cbbNumber.Name = "cbbNumber";
-            this.cbbNumber.Size = new System.Drawing.Size(45, 24);
-            this.cbbNumber.TabIndex = 9;
-            this.cbbNumber.SelectedIndexChanged += new System.EventHandler(this.cbbNumber_SelectedIndexChanged);
-            this.cbbNumber.SelectedValueChanged += new System.EventHandler(this.cbbNumber_SelectedValueChanged);
             // 
             // Main
             // 
