@@ -49,6 +49,7 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.llbSkip = new System.Windows.Forms.LinkLabel();
+            this.pnResult = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.pnTest.SuspendLayout();
             this.SuspendLayout();
@@ -258,9 +259,17 @@
             this.llbSkip.Visible = false;
             this.llbSkip.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbSkip_LinkClicked);
             // 
+            // pnResult
+            // 
+            this.pnResult.Location = new System.Drawing.Point(15, 95);
+            this.pnResult.Name = "pnResult";
+            this.pnResult.Size = new System.Drawing.Size(874, 344);
+            this.pnResult.TabIndex = 10;
+            // 
             // Main
             // 
             this.ClientSize = new System.Drawing.Size(966, 517);
+            this.Controls.Add(this.pnResult);
             this.Controls.Add(this.llbSkip);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnStart);
@@ -305,6 +314,7 @@
         private System.Windows.Forms.RadioButton rdbAnswer2;
         private System.Windows.Forms.Label lbl;
         private System.Windows.Forms.ComboBox cbbNumber;
+        private System.Windows.Forms.Panel pnResult;
     }
 }
 

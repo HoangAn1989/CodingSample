@@ -31,7 +31,7 @@ namespace DriverLicense
         //result
         public ArrayList contentQuestionList = new ArrayList(amountQuestion);
         public ArrayList contetnRightAnswerList = new ArrayList(amountQuestion);
-        public ArrayList contentWrongAnserList = new ArrayList(amountQuestion);
+        public ArrayList contentWrongAnswerList = new ArrayList(amountQuestion);
 
         //combobox
         public int indexCombobox = 0;
@@ -55,6 +55,7 @@ namespace DriverLicense
             btnStart.Visible = false;
             btnNext.Visible = true;
             llbSkip.Visible = true;
+            pnResult.Visible = false;
             getAllQuestion();
             cbbNumber.SelectedIndex = 0;
             displayContent();
@@ -220,11 +221,15 @@ namespace DriverLicense
         private void displayContent()
         {
             _count = cbbNumber.SelectedIndex;
-            idQuestion = (int)realTestList[_count];
-            _count++;
-
+            idQuestion = (int)realTestList[_count];            
             tbQuestion.Text = getQuestion(idQuestion);
-            //contentQuestionList.Add(tbQuestion.Text);
+
+            //Add question to list
+            contentQuestionList.Insert(_count,tbQuestion.Text);
+            string rightAnswer = getRightAnswer(idQuestion);
+            contetnRightAnswerList.Insert(_count,rightAnswer);
+
+            //Show Answer
             answer1 = getAnswer_1(idQuestion);
             flag1 = flagAnswer_1(idQuestion);
             rdbAnswer1.Text = answer1;
@@ -234,16 +239,14 @@ namespace DriverLicense
             answer3 = getAnswer_3(idQuestion);
             flag3 = flagAnswer_3(idQuestion);
             rdbAnswer3.Text = answer3;
+            _count++;
         }
 
         private void processNextClick()
-        {
-            string rightAnswer = getRightAnswer(idQuestion);
-            //contetnRightAnswerList.Add(rightAnswer);
-            
+        {         
             if (rdbAnswer1.Checked == true)
             {
-                //contentWrongAnserList.Add(rdbAnswer1.Text);                
+                contentWrongAnswerList.Insert(_count - 1, rdbAnswer1.Text);            
                 if (flag1 == 1)
                 {
                     totalRightAnswer++;
@@ -252,12 +255,11 @@ namespace DriverLicense
                 else
                 {
                     displayContent();
-                }
-                
+                }                
             }
             else if (rdbAnswer2.Checked == true)
             {
-                //contentWrongAnserList.Add(rdbAnswer2.Text);
+                contentWrongAnswerList.Insert(_count - 1, rdbAnswer1.Text);
                 if (flag2 == 1)
                 {
                     totalRightAnswer++;
@@ -266,12 +268,11 @@ namespace DriverLicense
                 else
                 {
                     displayContent();
-                }
-               
+                }               
             }
             else if (rdbAnswer3.Checked == true)
             {
-                //contentWrongAnserList.Add(rdbAnswer2.Text);
+                contentWrongAnswerList.Insert(_count - 1, rdbAnswer1.Text);
                 if (flag2 == 1)
                 {
                     totalRightAnswer++;
@@ -280,12 +281,10 @@ namespace DriverLicense
                 else
                 {
                     displayContent();
-                }
-                
+                }                
             }
             else
             {
-                cbbNumber.SelectedIndex = _count;
                 displayContent();
             }
         }
@@ -294,7 +293,12 @@ namespace DriverLicense
         {            
             if(_count < 25)
             {
-                processNextClick();                
+                cbbNumber.SelectedIndex = _count;
+                processNextClick();
+                if (_count == 25)
+                {
+                    llbSkip.Visible = false;
+                }
             }
             else if(_count == 25)
             {
@@ -306,6 +310,7 @@ namespace DriverLicense
                 rdbAnswer3.Text = "";
                 btnNext.Visible = false;
                 llbSkip.Visible = false;
+                pnResult.Visible = true;
             }
             rdbAnswer1.Checked = false;
             rdbAnswer2.Checked = false;
@@ -316,10 +321,6 @@ namespace DriverLicense
         {            
             if (_count < 25)
             {
-                //string rightAnswer = getRightAnswer(idQuestion);
-                //contetnRightAnswerList.Add(rightAnswer);
-                //contentWrongAnserList.Add("");
-                //cbbNumber.SelectedIndex = _count;
                 cbbNumber.SelectedIndex = _count;
                 displayContent();
                 
@@ -337,6 +338,7 @@ namespace DriverLicense
                 rdbAnswer3.Text = "";
                 btnNext.Visible = false;
                 llbSkip.Visible = false;
+                pnResult.Visible = true;
             }
             rdbAnswer1.Checked = false;
             rdbAnswer2.Checked = false;
@@ -347,12 +349,10 @@ namespace DriverLicense
         {
             
                 indexCombobox = cbbNumber.SelectedIndex;
-
                 idQuestion = (int)realTestList[indexCombobox];
                 _count = indexCombobox + 1;
 
                 tbQuestion.Text = getQuestion(idQuestion);
-                //contentQuestionList.Add(tbQuestion.Text);
                 answer1 = getAnswer_1(idQuestion);
                 flag1 = flagAnswer_1(idQuestion);
                 rdbAnswer1.Text = answer1;
