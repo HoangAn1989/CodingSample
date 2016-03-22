@@ -50,8 +50,10 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.llbSkip = new System.Windows.Forms.LinkLabel();
             this.pnResult = new System.Windows.Forms.Panel();
+            this.lbxResult = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.pnTest.SuspendLayout();
+            this.pnResult.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -261,10 +263,22 @@
             // 
             // pnResult
             // 
+            this.pnResult.Controls.Add(this.lbxResult);
             this.pnResult.Location = new System.Drawing.Point(15, 95);
             this.pnResult.Name = "pnResult";
-            this.pnResult.Size = new System.Drawing.Size(874, 344);
+            this.pnResult.Size = new System.Drawing.Size(928, 344);
             this.pnResult.TabIndex = 10;
+            // 
+            // lbxResult
+            // 
+            this.lbxResult.BackColor = System.Drawing.SystemColors.Control;
+            this.lbxResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbxResult.FormattingEnabled = true;
+            this.lbxResult.ItemHeight = 16;
+            this.lbxResult.Location = new System.Drawing.Point(6, 6);
+            this.lbxResult.Name = "lbxResult";
+            this.lbxResult.Size = new System.Drawing.Size(919, 340);
+            this.lbxResult.TabIndex = 0;
             // 
             // Main
             // 
@@ -284,6 +298,7 @@
             this.menuStrip1.PerformLayout();
             this.pnTest.ResumeLayout(false);
             this.pnTest.PerformLayout();
+            this.pnResult.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,8 +306,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -315,6 +329,7 @@
         private System.Windows.Forms.Label lbl;
         private System.Windows.Forms.ComboBox cbbNumber;
         private System.Windows.Forms.Panel pnResult;
+        private System.Windows.Forms.ListBox lbxResult;
     }
 }
 

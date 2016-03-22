@@ -29,9 +29,9 @@ namespace DriverLicense
         public int flag1, flag2, flag3 = 0;
 
         //result
-        public ArrayList contentQuestionList = new ArrayList(amountQuestion);
-        public ArrayList contetnRightAnswerList = new ArrayList(amountQuestion);
-        public ArrayList contentWrongAnswerList = new ArrayList(amountQuestion);
+        public string[] contentQuestionList;
+        public string[] contetnRightAnswerList;
+        public string[] contentWrongAnswerList;
 
         //combobox
         public int indexCombobox = 0;
@@ -56,9 +56,12 @@ namespace DriverLicense
             btnNext.Visible = true;
             llbSkip.Visible = true;
             pnResult.Visible = false;
+            contentQuestionList = new string[amountQuestion];
+            contetnRightAnswerList = new string[amountQuestion];
+            contentWrongAnswerList = new string[amountQuestion];
             getAllQuestion();
             cbbNumber.SelectedIndex = 0;
-            displayContent();
+            showContent();
             
         }      
         
@@ -218,16 +221,16 @@ namespace DriverLicense
             return rightanswer;
         }
 
-        private void displayContent()
+        private void showContent()
         {
             _count = cbbNumber.SelectedIndex;
             idQuestion = (int)realTestList[_count];            
             tbQuestion.Text = getQuestion(idQuestion);
-
+            
             //Add question to list
-            contentQuestionList.Insert(_count,tbQuestion.Text);
+            contentQuestionList[_count] = tbQuestion.Text;
             string rightAnswer = getRightAnswer(idQuestion);
-            contetnRightAnswerList.Insert(_count,rightAnswer);
+            contetnRightAnswerList[_count] = rightAnswer;
 
             //Show Answer
             answer1 = getAnswer_1(idQuestion);
@@ -240,52 +243,55 @@ namespace DriverLicense
             flag3 = flagAnswer_3(idQuestion);
             rdbAnswer3.Text = answer3;
             _count++;
+            
         }
 
         private void processNextClick()
-        {         
+        {
+            
+            int index = _count - 2;
             if (rdbAnswer1.Checked == true)
             {
-                contentWrongAnswerList.Insert(_count - 1, rdbAnswer1.Text);            
+                contentWrongAnswerList[index] = rdbAnswer1.Text;            
                 if (flag1 == 1)
                 {
                     totalRightAnswer++;
-                    displayContent();
+                    showContent();
                 }
                 else
                 {
-                    displayContent();
+                    showContent();
                 }                
             }
             else if (rdbAnswer2.Checked == true)
             {
-                contentWrongAnswerList.Insert(_count - 1, rdbAnswer1.Text);
+                contentWrongAnswerList[index] = rdbAnswer2.Text;
                 if (flag2 == 1)
                 {
                     totalRightAnswer++;
-                    displayContent();
+                    showContent();
                 }
                 else
                 {
-                    displayContent();
+                    showContent();
                 }               
             }
             else if (rdbAnswer3.Checked == true)
             {
-                contentWrongAnswerList.Insert(_count - 1, rdbAnswer1.Text);
+                contentWrongAnswerList[index] = rdbAnswer3.Text;
                 if (flag2 == 1)
                 {
                     totalRightAnswer++;
-                    displayContent();
+                    showContent();
                 }
                 else
                 {
-                    displayContent();
+                    showContent();
                 }                
             }
             else
             {
-                displayContent();
+                showContent();
             }
         }
 
@@ -295,6 +301,7 @@ namespace DriverLicense
             {
                 cbbNumber.SelectedIndex = _count;
                 processNextClick();
+                
                 if (_count == 25)
                 {
                     llbSkip.Visible = false;
@@ -311,6 +318,7 @@ namespace DriverLicense
                 btnNext.Visible = false;
                 llbSkip.Visible = false;
                 pnResult.Visible = true;
+                showResult();
             }
             rdbAnswer1.Checked = false;
             rdbAnswer2.Checked = false;
@@ -318,28 +326,14 @@ namespace DriverLicense
         }
 
         private void llbSkip_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {            
-            if (_count < 25)
+        {                       
+            cbbNumber.SelectedIndex = _count;
+            showContent();
+              
+            if (_count == 25)
             {
-                cbbNumber.SelectedIndex = _count;
-                displayContent();
-                
-                if (_count == 25)
-                {
-                    llbSkip.Visible = false;
-                }
-            }
-            else if (_count == 25)
-            {                
-                pnTest.Visible = false;
-                tbQuestion.Text = "";
-                rdbAnswer1.Text = "";
-                rdbAnswer2.Text = "";
-                rdbAnswer3.Text = "";
-                btnNext.Visible = false;
                 llbSkip.Visible = false;
-                pnResult.Visible = true;
-            }
+            }     
             rdbAnswer1.Checked = false;
             rdbAnswer2.Checked = false;
             rdbAnswer3.Checked = false;
@@ -347,24 +341,32 @@ namespace DriverLicense
 
         private void cbbNumber_SelectedIndexChanged(object sender, EventArgs e)
         {
+            indexCombobox = cbbNumber.SelectedIndex;
+            idQuestion = (int)realTestList[indexCombobox];
+            _count = indexCombobox + 1; 
             
-                indexCombobox = cbbNumber.SelectedIndex;
-                idQuestion = (int)realTestList[indexCombobox];
-                _count = indexCombobox + 1;
+            tbQuestion.Text = getQuestion(idQuestion);
+            answer1 = getAnswer_1(idQuestion);
+            flag1 = flagAnswer_1(idQuestion);
+            rdbAnswer1.Text = answer1;
+            answer2 = getAnswer_2(idQuestion);
+            flag2 = flagAnswer_2(idQuestion);
+            rdbAnswer2.Text = answer2;
+            answer3 = getAnswer_3(idQuestion);
+            flag3 = flagAnswer_3(idQuestion);
+            rdbAnswer3.Text = answer3;
 
-                tbQuestion.Text = getQuestion(idQuestion);
-                answer1 = getAnswer_1(idQuestion);
-                flag1 = flagAnswer_1(idQuestion);
-                rdbAnswer1.Text = answer1;
-                answer2 = getAnswer_2(idQuestion);
-                flag2 = flagAnswer_2(idQuestion);
-                rdbAnswer2.Text = answer2;
-                answer3 = getAnswer_3(idQuestion);
-                flag3 = flagAnswer_3(idQuestion);
-                rdbAnswer3.Text = answer3;
-            
+            if (indexCombobox < 24)
+            {
+                llbSkip.Visible = true;
+            }
         }       
 
+        private void showResult()
+        {
+            lbxResult.Items.Add("sadwdwadwad\r\n1234");
+            lbxResult.Items.Add("789456" + Environment.NewLine + "oplkiu");
+        }
         
         
     }
