@@ -248,7 +248,7 @@ namespace DriverLicense
 
         private void processNextClick()
         {
-            
+
             int index = _count - 2;
             if (rdbAnswer1.Checked == true)
             {
@@ -309,6 +309,7 @@ namespace DriverLicense
             }
             else if(_count == 25)
             {
+                _count = 26;
                 processNextClick();
                 pnTest.Visible = false;
                 tbQuestion.Text = "";
@@ -318,6 +319,9 @@ namespace DriverLicense
                 btnNext.Visible = false;
                 llbSkip.Visible = false;
                 pnResult.Visible = true;
+                lbxResult.Visible = true;
+                lbl1.Visible = true;
+                lblResult.Visible = true;
                 showResult();
             }
             rdbAnswer1.Checked = false;
@@ -364,8 +368,28 @@ namespace DriverLicense
 
         private void showResult()
         {
-            lbxResult.Items.Add("sadwdwadwad\r\n1234");
-            lbxResult.Items.Add("789456" + Environment.NewLine + "oplkiu");
+            lblResult.Text = totalRightAnswer.ToString() + "/25"; 
+            for (int i = 0; i < amountQuestion; i++ )
+            {
+                int STT = i + 1;
+                lbxResult.Items.Add("Question " + STT + " :");
+                lbxResult.Items.Add(contentQuestionList[i]);
+                lbxResult.Items.Add("Your Answer :");
+                if (contentWrongAnswerList[i] == null)
+                {
+                    lbxResult.Items.Add("No Answer :");
+                }
+                else
+                {
+                    lbxResult.Items.Add(contentWrongAnswerList[i]);
+                }
+                
+                lbxResult.Items.Add("Right Answer :");
+                lbxResult.Items.Add(contetnRightAnswerList[i]);
+                lbxResult.Items.Add(" ");
+            }
+                
+            
         }
         
         

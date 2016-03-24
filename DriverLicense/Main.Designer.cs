@@ -51,6 +51,8 @@
             this.llbSkip = new System.Windows.Forms.LinkLabel();
             this.pnResult = new System.Windows.Forms.Panel();
             this.lbxResult = new System.Windows.Forms.ListBox();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.lblResult = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.pnTest.SuspendLayout();
             this.pnResult.SuspendLayout();
@@ -263,6 +265,8 @@
             // 
             // pnResult
             // 
+            this.pnResult.Controls.Add(this.lblResult);
+            this.pnResult.Controls.Add(this.lbl1);
             this.pnResult.Controls.Add(this.lbxResult);
             this.pnResult.Location = new System.Drawing.Point(15, 95);
             this.pnResult.Name = "pnResult";
@@ -272,13 +276,38 @@
             // lbxResult
             // 
             this.lbxResult.BackColor = System.Drawing.SystemColors.Control;
-            this.lbxResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbxResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbxResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbxResult.FormattingEnabled = true;
             this.lbxResult.ItemHeight = 16;
-            this.lbxResult.Location = new System.Drawing.Point(6, 6);
+            this.lbxResult.Location = new System.Drawing.Point(6, 38);
             this.lbxResult.Name = "lbxResult";
-            this.lbxResult.Size = new System.Drawing.Size(919, 340);
+            this.lbxResult.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lbxResult.Size = new System.Drawing.Size(919, 304);
             this.lbxResult.TabIndex = 0;
+            this.lbxResult.Visible = false;
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl1.Location = new System.Drawing.Point(3, 11);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(69, 20);
+            this.lbl1.TabIndex = 1;
+            this.lbl1.Text = "ReSult:";
+            this.lbl1.Visible = false;
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.Location = new System.Drawing.Point(78, 13);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(52, 17);
+            this.lblResult.TabIndex = 2;
+            this.lblResult.Text = "label1";
+            this.lblResult.Visible = false;
             // 
             // Main
             // 
@@ -299,6 +328,7 @@
             this.pnTest.ResumeLayout(false);
             this.pnTest.PerformLayout();
             this.pnResult.ResumeLayout(false);
+            this.pnResult.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,6 +360,8 @@
         private System.Windows.Forms.ComboBox cbbNumber;
         private System.Windows.Forms.Panel pnResult;
         private System.Windows.Forms.ListBox lbxResult;
+        private System.Windows.Forms.Label lbl1;
+        private System.Windows.Forms.Label lblResult;
     }
 }
 
