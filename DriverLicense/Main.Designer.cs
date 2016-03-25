@@ -50,9 +50,9 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.llbSkip = new System.Windows.Forms.LinkLabel();
             this.pnResult = new System.Windows.Forms.Panel();
-            this.lbxResult = new System.Windows.Forms.ListBox();
-            this.lbl1 = new System.Windows.Forms.Label();
             this.lblResult = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.lbxResult = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.pnTest.SuspendLayout();
             this.pnResult.SuspendLayout();
@@ -104,25 +104,25 @@
             // refeshToolStripMenuItem
             // 
             this.refeshToolStripMenuItem.Name = "refeshToolStripMenuItem";
-            this.refeshToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.refeshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.refeshToolStripMenuItem.Text = "Refesh";
             // 
             // returnToolStripMenuItem
             // 
             this.returnToolStripMenuItem.Name = "returnToolStripMenuItem";
-            this.returnToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.returnToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.returnToolStripMenuItem.Text = "Return";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(109, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem2.Text = ".";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // adminToolStripMenuItem
@@ -130,6 +130,7 @@
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.adminToolStripMenuItem.Text = "Admin";
+            this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -273,6 +274,28 @@
             this.pnResult.Size = new System.Drawing.Size(928, 344);
             this.pnResult.TabIndex = 10;
             // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.Location = new System.Drawing.Point(78, 13);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(52, 17);
+            this.lblResult.TabIndex = 2;
+            this.lblResult.Text = "label1";
+            this.lblResult.Visible = false;
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl1.Location = new System.Drawing.Point(3, 11);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(69, 20);
+            this.lbl1.TabIndex = 1;
+            this.lbl1.Text = "ReSult:";
+            this.lbl1.Visible = false;
+            // 
             // lbxResult
             // 
             this.lbxResult.BackColor = System.Drawing.SystemColors.Control;
@@ -286,28 +309,6 @@
             this.lbxResult.Size = new System.Drawing.Size(919, 304);
             this.lbxResult.TabIndex = 0;
             this.lbxResult.Visible = false;
-            // 
-            // lbl1
-            // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl1.Location = new System.Drawing.Point(3, 11);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(69, 20);
-            this.lbl1.TabIndex = 1;
-            this.lbl1.Text = "ReSult:";
-            this.lbl1.Visible = false;
-            // 
-            // lblResult
-            // 
-            this.lblResult.AutoSize = true;
-            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResult.Location = new System.Drawing.Point(78, 13);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(52, 17);
-            this.lblResult.TabIndex = 2;
-            this.lblResult.Text = "label1";
-            this.lblResult.Visible = false;
             // 
             // Main
             // 

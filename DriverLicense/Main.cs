@@ -79,7 +79,6 @@ namespace DriverLicense
                 idQuestionList.Add(table.Rows[i][0]);
                 
             }
-
             realTestList = new ArrayList(amountQuestion);
             int getID;
             for(int j=0; j<25; j++)
@@ -87,8 +86,10 @@ namespace DriverLicense
                 int numberRandom = _Random.Next(idQuestionList.Count);
                 getID = (int)idQuestionList[numberRandom];
                 realTestList.Add(getID);
+                contentQuestionList[j] = getQuestion(getID);
                 idQuestionList.Remove(numberRandom);
                 cbbNumber.Items.Add(j+1);
+
             }
         }
 
@@ -372,8 +373,8 @@ namespace DriverLicense
             for (int i = 0; i < amountQuestion; i++ )
             {
                 int STT = i + 1;
-                lbxResult.Items.Add("Question " + STT + " :");
-                lbxResult.Items.Add(contentQuestionList[i]);
+                lbxResult.Items.Add("Question " + STT + " : " + contentQuestionList[i]);
+                //lbxResult.Items.Add(contentQuestionList[i]);
                 lbxResult.Items.Add("Your Answer :");
                 if (contentWrongAnswerList[i] == null)
                 {
@@ -390,6 +391,12 @@ namespace DriverLicense
             }
                 
             
+        }
+
+        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Login lg = new Login();
+            lg.Show();
         }
         
         
