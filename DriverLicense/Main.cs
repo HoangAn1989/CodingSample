@@ -36,11 +36,29 @@ namespace DriverLicense
         //combobox
         public int indexCombobox = 0;
 
+        //Admin
+        public string userName = "";
+
         public Main()
         {
             InitializeComponent();
             cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
-            cnn.Open();            
+            cnn.Open();
+            if(userName != "")
+            {
+                
+                
+            }
+            
+        }
+        public void showManageTool()
+        {
+            ManageToolStripMenuItem.Visible = true;
+        }
+
+        public void hideAdminTool()
+        {
+            adminToolStripMenuItem.Visible = false;
         }
         private void connect()
         {
@@ -395,8 +413,52 @@ namespace DriverLicense
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Login lg = new Login();
-            lg.Show();
+            pnLogin.Visible = true;
+            
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            String User = tbUsername.Text;
+
+            if (tbUsername.Text == "" || tbPassword.Text == "")
+            {
+                MessageBox.Show("Please, Fill out Username & Password");
+            }
+            else
+            {
+                try
+                {
+                    cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
+                    SqlCommand command = new SqlCommand();
+                    command.CommandText = "Select * from ADMINISTRATOR where USER_ID = @id and USER_PASS = @pass";
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@id", tbUsername.Text);
+                    command.Parameters.AddWithValue("@pass", tbPassword.Text);
+                    command.Connection = cnn;
+                    cnn.Open();
+                    User = command.ExecuteScalar().ToString();
+                    cnn.Close();
+
+                    userName = User;
+                    pnLogin.Visible = false;
+                    ManageToolStripMenuItem.Visible = true;
+                    adminToolStripMenuItem.Visible = false;
+                }
+                catch
+                {
+                    MessageBox.Show("Please, Double check your User & Password.");
+                    return;
+                }
+            }
+        }
+
+        private void ManageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Manage mn = new Manage();
+            mn.userName = userName;
+            mn.Show();
+            this.Close();
         }
         
         

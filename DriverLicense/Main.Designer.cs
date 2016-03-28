@@ -37,8 +37,9 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ManageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pnTest = new System.Windows.Forms.Panel();
             this.cbbNumber = new System.Windows.Forms.ComboBox();
             this.lbl = new System.Windows.Forms.Label();
@@ -53,9 +54,16 @@
             this.lblResult = new System.Windows.Forms.Label();
             this.lbl1 = new System.Windows.Forms.Label();
             this.lbxResult = new System.Windows.Forms.ListBox();
+            this.pnLogin = new System.Windows.Forms.Panel();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.tbUsername = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.pnTest.SuspendLayout();
             this.pnResult.SuspendLayout();
+            this.pnLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -82,8 +90,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.adminToolStripMenuItem,
+            this.ManageToolStripMenuItem,
             this.helpToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(966, 24);
@@ -104,25 +113,25 @@
             // refeshToolStripMenuItem
             // 
             this.refeshToolStripMenuItem.Name = "refeshToolStripMenuItem";
-            this.refeshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.refeshToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.refeshToolStripMenuItem.Text = "Refesh";
             // 
             // returnToolStripMenuItem
             // 
             this.returnToolStripMenuItem.Name = "returnToolStripMenuItem";
-            this.returnToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.returnToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.returnToolStripMenuItem.Text = "Return";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(109, 22);
             this.toolStripMenuItem2.Text = ".";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // adminToolStripMenuItem
@@ -132,17 +141,25 @@
             this.adminToolStripMenuItem.Text = "Admin";
             this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
+            // ManageToolStripMenuItem
+            // 
+            this.ManageToolStripMenuItem.Name = "ManageToolStripMenuItem";
+            this.ManageToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.ManageToolStripMenuItem.Text = "Manage";
+            this.ManageToolStripMenuItem.Visible = false;
+            this.ManageToolStripMenuItem.Click += new System.EventHandler(this.ManageToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // aboutToolStripMenuItem
+            // aboutToolStripMenuItem1
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem1.Text = "About";
             // 
             // pnTest
             // 
@@ -266,6 +283,7 @@
             // 
             // pnResult
             // 
+            this.pnResult.Controls.Add(this.pnLogin);
             this.pnResult.Controls.Add(this.lblResult);
             this.pnResult.Controls.Add(this.lbl1);
             this.pnResult.Controls.Add(this.lbxResult);
@@ -310,6 +328,66 @@
             this.lbxResult.TabIndex = 0;
             this.lbxResult.Visible = false;
             // 
+            // pnLogin
+            // 
+            this.pnLogin.Controls.Add(this.btnLogin);
+            this.pnLogin.Controls.Add(this.tbPassword);
+            this.pnLogin.Controls.Add(this.tbUsername);
+            this.pnLogin.Controls.Add(this.label1);
+            this.pnLogin.Controls.Add(this.label3);
+            this.pnLogin.Location = new System.Drawing.Point(136, 3);
+            this.pnLogin.Name = "pnLogin";
+            this.pnLogin.Size = new System.Drawing.Size(649, 338);
+            this.pnLogin.TabIndex = 3;
+            this.pnLogin.Visible = false;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnLogin.Location = new System.Drawing.Point(269, 108);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(90, 28);
+            this.btnLogin.TabIndex = 3;
+            this.btnLogin.Text = "Log in";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // tbPassword
+            // 
+            this.tbPassword.Location = new System.Drawing.Point(227, 59);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(210, 20);
+            this.tbPassword.TabIndex = 2;
+            // 
+            // tbUsername
+            // 
+            this.tbUsername.Location = new System.Drawing.Point(227, 24);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(210, 20);
+            this.tbUsername.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(129, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 18);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "PassWord:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(128, 23);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 18);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "UserName:";
+            // 
             // Main
             // 
             this.ClientSize = new System.Drawing.Size(966, 517);
@@ -330,6 +408,8 @@
             this.pnTest.PerformLayout();
             this.pnResult.ResumeLayout(false);
             this.pnResult.PerformLayout();
+            this.pnLogin.ResumeLayout(false);
+            this.pnLogin.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,8 +427,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ManageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Panel pnTest;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnNext;
@@ -363,6 +443,13 @@
         private System.Windows.Forms.ListBox lbxResult;
         private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
+        private System.Windows.Forms.Panel pnLogin;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.TextBox tbUsername;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
     }
 }
 
