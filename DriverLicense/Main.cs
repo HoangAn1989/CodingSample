@@ -455,10 +455,11 @@ namespace DriverLicense
 
         private void ManageToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Manage mn = new Manage();
             mn.userName = userName;
             mn.Show();
-            this.Close();
+                
         }
         
         

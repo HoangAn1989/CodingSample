@@ -36,15 +36,16 @@
             this.btDelete = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabQuestion = new System.Windows.Forms.TabPage();
-            this.tabUser = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbQuestion = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbAnswer1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tbAnswer2 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.btSelect = new System.Windows.Forms.Button();
             this.tbAnswer3 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbAnswer2 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbAnswer1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbQuestion = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tabUser = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabQuestion.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +62,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(653, 7);
+            this.label1.Location = new System.Drawing.Point(653, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 1;
@@ -70,7 +71,7 @@
             // lbUser
             // 
             this.lbUser.AutoSize = true;
-            this.lbUser.Location = new System.Drawing.Point(717, 7);
+            this.lbUser.Location = new System.Drawing.Point(717, 3);
             this.lbUser.Name = "lbUser";
             this.lbUser.Size = new System.Drawing.Size(35, 13);
             this.lbUser.TabIndex = 2;
@@ -78,43 +79,47 @@
             // 
             // btNew
             // 
-            this.btNew.Location = new System.Drawing.Point(805, 285);
+            this.btNew.Location = new System.Drawing.Point(790, 264);
             this.btNew.Name = "btNew";
             this.btNew.Size = new System.Drawing.Size(75, 23);
             this.btNew.TabIndex = 3;
             this.btNew.Text = "New";
             this.btNew.UseVisualStyleBackColor = true;
+            this.btNew.Click += new System.EventHandler(this.btNew_Click);
             // 
             // btUpdate
             // 
-            this.btUpdate.Location = new System.Drawing.Point(805, 328);
+            this.btUpdate.Location = new System.Drawing.Point(473, 263);
             this.btUpdate.Name = "btUpdate";
             this.btUpdate.Size = new System.Drawing.Size(75, 23);
             this.btUpdate.TabIndex = 4;
             this.btUpdate.Text = "Update";
             this.btUpdate.UseVisualStyleBackColor = true;
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
             // 
             // btDelete
             // 
-            this.btDelete.Location = new System.Drawing.Point(805, 371);
+            this.btDelete.Location = new System.Drawing.Point(637, 263);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(75, 23);
             this.btDelete.TabIndex = 5;
             this.btDelete.Text = "Delete";
             this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabQuestion);
             this.tabControl1.Controls.Add(this.tabUser);
-            this.tabControl1.Location = new System.Drawing.Point(0, 23);
+            this.tabControl1.Location = new System.Drawing.Point(0, 16);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(894, 444);
+            this.tabControl1.Size = new System.Drawing.Size(894, 461);
             this.tabControl1.TabIndex = 6;
             // 
             // tabQuestion
             // 
+            this.tabQuestion.Controls.Add(this.btSelect);
             this.tabQuestion.Controls.Add(this.tbAnswer3);
             this.tabQuestion.Controls.Add(this.label5);
             this.tabQuestion.Controls.Add(this.tbAnswer2);
@@ -130,99 +135,110 @@
             this.tabQuestion.Location = new System.Drawing.Point(4, 22);
             this.tabQuestion.Name = "tabQuestion";
             this.tabQuestion.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQuestion.Size = new System.Drawing.Size(886, 418);
+            this.tabQuestion.Size = new System.Drawing.Size(886, 435);
             this.tabQuestion.TabIndex = 0;
             this.tabQuestion.Text = "Question";
             this.tabQuestion.UseVisualStyleBackColor = true;
+            // 
+            // btSelect
+            // 
+            this.btSelect.Location = new System.Drawing.Point(175, 264);
+            this.btSelect.Name = "btSelect";
+            this.btSelect.Size = new System.Drawing.Size(75, 23);
+            this.btSelect.TabIndex = 10;
+            this.btSelect.Text = "Select";
+            this.btSelect.UseVisualStyleBackColor = true;
+            this.btSelect.Click += new System.EventHandler(this.btSelect_Click);
+            // 
+            // tbAnswer3
+            // 
+            this.tbAnswer3.Location = new System.Drawing.Point(503, 373);
+            this.tbAnswer3.Multiline = true;
+            this.tbAnswer3.Name = "tbAnswer3";
+            this.tbAnswer3.Size = new System.Drawing.Size(296, 51);
+            this.tbAnswer3.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(443, 376);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Answer 3:";
+            // 
+            // tbAnswer2
+            // 
+            this.tbAnswer2.Location = new System.Drawing.Point(503, 296);
+            this.tbAnswer2.Multiline = true;
+            this.tbAnswer2.Name = "tbAnswer2";
+            this.tbAnswer2.Size = new System.Drawing.Size(296, 45);
+            this.tbAnswer2.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(443, 299);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Answer 2:";
+            // 
+            // tbAnswer1
+            // 
+            this.tbAnswer1.Location = new System.Drawing.Point(62, 373);
+            this.tbAnswer1.Multiline = true;
+            this.tbAnswer1.Name = "tbAnswer1";
+            this.tbAnswer1.Size = new System.Drawing.Size(363, 51);
+            this.tbAnswer1.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(2, 390);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Answer 1:";
+            // 
+            // tbQuestion
+            // 
+            this.tbQuestion.Location = new System.Drawing.Point(62, 293);
+            this.tbQuestion.Multiline = true;
+            this.tbQuestion.Name = "tbQuestion";
+            this.tbQuestion.Size = new System.Drawing.Size(363, 74);
+            this.tbQuestion.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1, 296);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Question: ";
             // 
             // tabUser
             // 
             this.tabUser.Location = new System.Drawing.Point(4, 22);
             this.tabUser.Name = "tabUser";
             this.tabUser.Padding = new System.Windows.Forms.Padding(3);
-            this.tabUser.Size = new System.Drawing.Size(886, 418);
+            this.tabUser.Size = new System.Drawing.Size(886, 435);
             this.tabUser.TabIndex = 1;
             this.tabUser.Text = "User";
             this.tabUser.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1, 280);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Question: ";
-            // 
-            // tbQuestion
-            // 
-            this.tbQuestion.Location = new System.Drawing.Point(62, 277);
-            this.tbQuestion.Multiline = true;
-            this.tbQuestion.Name = "tbQuestion";
-            this.tbQuestion.Size = new System.Drawing.Size(363, 74);
-            this.tbQuestion.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(2, 374);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Answer 1:";
-            // 
-            // tbAnswer1
-            // 
-            this.tbAnswer1.Location = new System.Drawing.Point(62, 357);
-            this.tbAnswer1.Multiline = true;
-            this.tbAnswer1.Name = "tbAnswer1";
-            this.tbAnswer1.Size = new System.Drawing.Size(363, 51);
-            this.tbAnswer1.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(443, 283);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Answer 2:";
-            // 
-            // tbAnswer2
-            // 
-            this.tbAnswer2.Location = new System.Drawing.Point(503, 280);
-            this.tbAnswer2.Multiline = true;
-            this.tbAnswer2.Name = "tbAnswer2";
-            this.tbAnswer2.Size = new System.Drawing.Size(296, 45);
-            this.tbAnswer2.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(443, 360);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Answer 3:";
-            // 
-            // tbAnswer3
-            // 
-            this.tbAnswer3.Location = new System.Drawing.Point(503, 357);
-            this.tbAnswer3.Multiline = true;
-            this.tbAnswer3.Name = "tbAnswer3";
-            this.tbAnswer3.Size = new System.Drawing.Size(296, 51);
-            this.tbAnswer3.TabIndex = 9;
             // 
             // Manage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 466);
+            this.ClientSize = new System.Drawing.Size(892, 477);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lbUser);
             this.Controls.Add(this.label1);
             this.Name = "Manage";
             this.Text = "Manage";
+            this.Load += new System.EventHandler(this.Manage_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabQuestion.ResumeLayout(false);
             this.tabQuestion.PerformLayout();
@@ -250,5 +266,6 @@
         private System.Windows.Forms.TextBox tbAnswer2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbAnswer1;
+        private System.Windows.Forms.Button btSelect;
     }
 }
