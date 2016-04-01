@@ -18,6 +18,7 @@ namespace DriverLicense
         SqlConnection cnn;
         private SqlDataAdapter myAdapter;
         DataTable dataTable;
+        DataTable userTable;
         private SqlCommand myCommand;
         private int index;
         public Manage()
@@ -28,10 +29,11 @@ namespace DriverLicense
         DataTable bang = new DataTable();
         private void Manage_Load(object sender, EventArgs e)
         {
-            loadData();
+            loadQuestion();
+            loadUSer();
         }
 
-        private void loadData()
+        private void loadQuestion()
         {
             lbUser.Text = userName;
             cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
@@ -54,7 +56,22 @@ namespace DriverLicense
                 lbListQuestion.Items.Add("     - " + dataRow["ANSWER3"]);
             }
 
-            this.Show();
+            
+        }
+
+        private void loadUSer()
+        {
+            cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
+            cnn.Open();
+            String str = "Select * From ADMINISTRATOR";
+            myAdapter = new SqlDataAdapter(str, cnn);
+            userTable = new DataTable();
+            myAdapter.Fill(userTable);
+
+            foreach (DataRow row in userTable.Rows)
+            {
+                lboxUser.Items.Add("UserName/PassWord: " + row["USER_ID"] + "/" + row["USER_PASS"]);
+            }
         }
 
         private void btUpdate_Click(object sender, EventArgs e)
@@ -117,7 +134,7 @@ namespace DriverLicense
             cnn.Open();
             myCommand.ExecuteNonQuery();//ko tra ve chi thuc hien
             cnn.Close();
-            loadData();
+            loadQuestion();
         }
         
         private int countRowQuestion()
@@ -166,6 +183,47 @@ namespace DriverLicense
                 }
             }
         }
+
+        private void btSelectUser_Click(object sender, EventArgs e)
+        {
+            DataRow targetRow = userTable.Rows[lboxUser.SelectedIndex];
+            tbUser.Text = targetRow["USER_ID"].ToString();
+            tbPass.Text = targetRow["USER_PASS"].ToString();
+            tbUser.ReadOnly = true;
+            Application.DoEvents();
+        }
+
+        private void btUpdateUser_Click(object sender, EventArgs e)
+        {
+            cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
+            cnn.Open();
+            myCommand = new SqlCommand("Update ADMINISTRATOR Set USER_PASS = '" + tbPass.Text + "' Where USER_ID = '" + tbUser.Text, cnn);
+            myCommand.ExecuteNonQuery();
+            cnn.Close();
+        }
+
+        private void btDeleteUser_Click(object sender, EventArgs e)
+        {
+            cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
+            cnn.Open();
+            myCommand = new SqlCommand("delete from ADMINISTRATOR where USER_ID = '" + tbUser.Text, cnn);
+            myCommand.ExecuteNonQuery();
+        }
+
+        private void btNewUser_Click(object sender, EventArgs e)
+        {
+            cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
+            myCommand = new SqlCommand("insert into ADMINISTRATOR (USER_ID,USER_PASS) values('" + tbUser.Text + "','" + tbPass.Text + "')", cnn);
+            cnn.Open();
+            myCommand.ExecuteNonQuery();//ko tra ve chi thuc hien
+            cnn.Close();
+        }
+
+        private void btUnSelect_Click(object sender, EventArgs e)
+        {
+            tbUser.ReadOnly = false;
+        }
+
         
     }
 }

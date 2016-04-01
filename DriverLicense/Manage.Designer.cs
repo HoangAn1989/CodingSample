@@ -46,8 +46,20 @@
             this.tbQuestion = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabUser = new System.Windows.Forms.TabPage();
+            this.lboxUser = new System.Windows.Forms.ListBox();
+            this.tbUser = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbPass = new System.Windows.Forms.TextBox();
+            this.btSelectUser = new System.Windows.Forms.Button();
+            this.btUpdateUser = new System.Windows.Forms.Button();
+            this.btDeleteUser = new System.Windows.Forms.Button();
+            this.btNewUser = new System.Windows.Forms.Button();
+            this.btUnSelect = new System.Windows.Forms.Button();
+            this.btUnSelectQuestion = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabQuestion.SuspendLayout();
+            this.tabUser.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbListQuestion
@@ -119,6 +131,7 @@
             // 
             // tabQuestion
             // 
+            this.tabQuestion.Controls.Add(this.btUnSelectQuestion);
             this.tabQuestion.Controls.Add(this.btSelect);
             this.tabQuestion.Controls.Add(this.tbAnswer3);
             this.tabQuestion.Controls.Add(this.label5);
@@ -142,7 +155,7 @@
             // 
             // btSelect
             // 
-            this.btSelect.Location = new System.Drawing.Point(175, 264);
+            this.btSelect.Location = new System.Drawing.Point(62, 264);
             this.btSelect.Name = "btSelect";
             this.btSelect.Size = new System.Drawing.Size(75, 23);
             this.btSelect.TabIndex = 10;
@@ -220,6 +233,16 @@
             // 
             // tabUser
             // 
+            this.tabUser.Controls.Add(this.btUnSelect);
+            this.tabUser.Controls.Add(this.btNewUser);
+            this.tabUser.Controls.Add(this.btDeleteUser);
+            this.tabUser.Controls.Add(this.btUpdateUser);
+            this.tabUser.Controls.Add(this.btSelectUser);
+            this.tabUser.Controls.Add(this.label7);
+            this.tabUser.Controls.Add(this.label6);
+            this.tabUser.Controls.Add(this.tbPass);
+            this.tabUser.Controls.Add(this.tbUser);
+            this.tabUser.Controls.Add(this.lboxUser);
             this.tabUser.Location = new System.Drawing.Point(4, 22);
             this.tabUser.Name = "tabUser";
             this.tabUser.Padding = new System.Windows.Forms.Padding(3);
@@ -227,6 +250,108 @@
             this.tabUser.TabIndex = 1;
             this.tabUser.Text = "User";
             this.tabUser.UseVisualStyleBackColor = true;
+            // 
+            // lboxUser
+            // 
+            this.lboxUser.FormattingEnabled = true;
+            this.lboxUser.Location = new System.Drawing.Point(6, 6);
+            this.lboxUser.Name = "lboxUser";
+            this.lboxUser.Size = new System.Drawing.Size(369, 420);
+            this.lboxUser.TabIndex = 0;
+            // 
+            // tbUser
+            // 
+            this.tbUser.Location = new System.Drawing.Point(485, 11);
+            this.tbUser.Name = "tbUser";
+            this.tbUser.Size = new System.Drawing.Size(187, 20);
+            this.tbUser.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(381, 11);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(98, 17);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "User Name: ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(381, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(91, 17);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Pass Word:";
+            // 
+            // tbPass
+            // 
+            this.tbPass.Location = new System.Drawing.Point(485, 57);
+            this.tbPass.Name = "tbPass";
+            this.tbPass.Size = new System.Drawing.Size(187, 20);
+            this.tbPass.TabIndex = 2;
+            this.tbPass.UseSystemPasswordChar = true;
+            // 
+            // btSelectUser
+            // 
+            this.btSelectUser.Location = new System.Drawing.Point(426, 118);
+            this.btSelectUser.Name = "btSelectUser";
+            this.btSelectUser.Size = new System.Drawing.Size(75, 23);
+            this.btSelectUser.TabIndex = 3;
+            this.btSelectUser.Text = "Select";
+            this.btSelectUser.UseVisualStyleBackColor = true;
+            this.btSelectUser.Click += new System.EventHandler(this.btSelectUser_Click);
+            // 
+            // btUpdateUser
+            // 
+            this.btUpdateUser.Location = new System.Drawing.Point(741, 118);
+            this.btUpdateUser.Name = "btUpdateUser";
+            this.btUpdateUser.Size = new System.Drawing.Size(75, 23);
+            this.btUpdateUser.TabIndex = 3;
+            this.btUpdateUser.Text = "Update";
+            this.btUpdateUser.UseVisualStyleBackColor = true;
+            this.btUpdateUser.Click += new System.EventHandler(this.btUpdateUser_Click);
+            // 
+            // btDeleteUser
+            // 
+            this.btDeleteUser.Location = new System.Drawing.Point(741, 179);
+            this.btDeleteUser.Name = "btDeleteUser";
+            this.btDeleteUser.Size = new System.Drawing.Size(75, 23);
+            this.btDeleteUser.TabIndex = 3;
+            this.btDeleteUser.Text = "Delete";
+            this.btDeleteUser.UseVisualStyleBackColor = true;
+            this.btDeleteUser.Click += new System.EventHandler(this.btDeleteUser_Click);
+            // 
+            // btNewUser
+            // 
+            this.btNewUser.Location = new System.Drawing.Point(741, 252);
+            this.btNewUser.Name = "btNewUser";
+            this.btNewUser.Size = new System.Drawing.Size(75, 23);
+            this.btNewUser.TabIndex = 3;
+            this.btNewUser.Text = "New";
+            this.btNewUser.UseVisualStyleBackColor = true;
+            this.btNewUser.Click += new System.EventHandler(this.btNewUser_Click);
+            // 
+            // btUnSelect
+            // 
+            this.btUnSelect.Location = new System.Drawing.Point(579, 117);
+            this.btUnSelect.Name = "btUnSelect";
+            this.btUnSelect.Size = new System.Drawing.Size(75, 23);
+            this.btUnSelect.TabIndex = 4;
+            this.btUnSelect.Text = "UnSelect";
+            this.btUnSelect.UseVisualStyleBackColor = true;
+            this.btUnSelect.Click += new System.EventHandler(this.btUnSelect_Click);
+            // 
+            // btUnSelectQuestion
+            // 
+            this.btUnSelectQuestion.Location = new System.Drawing.Point(208, 264);
+            this.btUnSelectQuestion.Name = "btUnSelectQuestion";
+            this.btUnSelectQuestion.Size = new System.Drawing.Size(75, 23);
+            this.btUnSelectQuestion.TabIndex = 11;
+            this.btUnSelectQuestion.Text = "UnSelect";
+            this.btUnSelectQuestion.UseVisualStyleBackColor = true;
             // 
             // Manage
             // 
@@ -242,6 +367,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabQuestion.ResumeLayout(false);
             this.tabQuestion.PerformLayout();
+            this.tabUser.ResumeLayout(false);
+            this.tabUser.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,5 +394,16 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbAnswer1;
         private System.Windows.Forms.Button btSelect;
+        private System.Windows.Forms.Button btNewUser;
+        private System.Windows.Forms.Button btDeleteUser;
+        private System.Windows.Forms.Button btUpdateUser;
+        private System.Windows.Forms.Button btSelectUser;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbPass;
+        private System.Windows.Forms.TextBox tbUser;
+        private System.Windows.Forms.ListBox lboxUser;
+        private System.Windows.Forms.Button btUnSelect;
+        private System.Windows.Forms.Button btUnSelectQuestion;
     }
 }
