@@ -444,6 +444,8 @@ namespace DriverLicense
                     pnLogin.Visible = false;
                     ManageToolStripMenuItem.Visible = true;
                     adminToolStripMenuItem.Visible = false;
+                    pnTest.Visible = false;
+                    pnResult.Visible = false;
                 }
                 catch
                 {

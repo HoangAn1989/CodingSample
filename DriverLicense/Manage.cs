@@ -72,24 +72,59 @@ namespace DriverLicense
             {
                 lboxUser.Items.Add("UserName/PassWord: " + row["USER_ID"] + "/" + row["USER_PASS"]);
             }
+            cnn.Close();
         }
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
             cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
             cnn.Open();
-            myCommand = new SqlCommand("Update QUESTION Set CONTENT_QUESTION = '" + tbQuestion.Text +"' Where ID_QUESTION = '" + index, cnn);            
-            myCommand.ExecuteNonQuery();
+            if(cbAnwser1.Checked == true)
+            {
+                myCommand = new SqlCommand("Update QUESTION Set CONTENT_QUESTION = '" + tbQuestion.Text + "' Where ID_QUESTION = '" + index + "'", cnn);
+                myCommand.ExecuteNonQuery();
 
-            myCommand = new SqlCommand("Update ANSWER_1 Set ANSWER1 = '" + tbAnswer1.Text + "' Where IDQUESTION = '" + index, cnn);            
-            myCommand.ExecuteNonQuery();
+                myCommand = new SqlCommand("Update ANSWER_1 Set ANSWER1 = '" + tbAnswer1.Text + "', FLAG1 = '1' Where IDQUESTION = '" + index + "'", cnn);
+                myCommand.ExecuteNonQuery();
 
-            myCommand = new SqlCommand("Update ANSWER_2 Set ANSWER1 = '" + tbAnswer2.Text + "' Where IDQUESTION = '" + index, cnn);            
-            myCommand.ExecuteNonQuery();
+                myCommand = new SqlCommand("Update ANSWER_2 Set ANSWER1 = '" + tbAnswer2.Text + "', FLAG2 = '0' Where IDQUESTION = '" + index + "'", cnn);
+                myCommand.ExecuteNonQuery();
 
-            myCommand = new SqlCommand("Update ANSWER_3 Set ANSWER1 = '" + tbAnswer3.Text + "' Where IDQUESTION = '" + index, cnn);            
-            myCommand.ExecuteNonQuery();
+                myCommand = new SqlCommand("Update ANSWER_3 Set ANSWER1 = '" + tbAnswer3.Text + "', FLAG3 = '0' Where IDQUESTION = '" + index + "'", cnn);
+                myCommand.ExecuteNonQuery();
+            }else if(cbAnswer2.Checked == true)
+            {
+                myCommand = new SqlCommand("Update QUESTION Set CONTENT_QUESTION = '" + tbQuestion.Text + "' Where ID_QUESTION = '" + index + "'", cnn);
+                myCommand.ExecuteNonQuery();
+
+                myCommand = new SqlCommand("Update ANSWER_1 Set ANSWER1 = '" + tbAnswer1.Text + "', FLAG1 = '0' Where IDQUESTION = '" + index + "'", cnn);
+                myCommand.ExecuteNonQuery();
+
+                myCommand = new SqlCommand("Update ANSWER_2 Set ANSWER1 = '" + tbAnswer2.Text + "', FLAG2 = '1' Where IDQUESTION = '" + index + "'", cnn);
+                myCommand.ExecuteNonQuery();
+
+                myCommand = new SqlCommand("Update ANSWER_3 Set ANSWER1 = '" + tbAnswer3.Text + "', FLAG3 = '0' Where IDQUESTION = '" + index + "'", cnn);
+                myCommand.ExecuteNonQuery();
+            }else if (cbAnswer3.Checked == true)
+            {
+                myCommand = new SqlCommand("Update QUESTION Set CONTENT_QUESTION = '" + tbQuestion.Text + "' Where ID_QUESTION = '" + index + "'", cnn);
+                myCommand.ExecuteNonQuery();
+
+                myCommand = new SqlCommand("Update ANSWER_1 Set ANSWER1 = '" + tbAnswer1.Text + "', FLAG1 = '0' Where IDQUESTION = '" + index + "'", cnn);
+                myCommand.ExecuteNonQuery();
+
+                myCommand = new SqlCommand("Update ANSWER_2 Set ANSWER1 = '" + tbAnswer2.Text + "', FLAG2 = '0' Where IDQUESTION = '" + index + "'", cnn);
+                myCommand.ExecuteNonQuery();
+
+                myCommand = new SqlCommand("Update ANSWER_3 Set ANSWER1 = '" + tbAnswer3.Text + "', FLAG3 = '1' Where IDQUESTION = '" + index + "'", cnn);
+                myCommand.ExecuteNonQuery();
+            }
+            else
+            {
+                MessageBox.Show("please, Stick one checkbox that is correct Answer");
+            }
             cnn.Close();
+            reset();
         }
 
 
@@ -102,6 +137,18 @@ namespace DriverLicense
             tbAnswer1.Text = targetRow["ANSWER1"].ToString();
             tbAnswer2.Text = targetRow["ANSWER2"].ToString();
             tbAnswer3.Text = targetRow["ANSWER3"].ToString();
+            if((int) targetRow["FLAG1"] == 1)
+            {
+                cbAnwser1.Checked = true;
+            }
+            else if((int) targetRow["FLAG2"] == 1)
+            {
+                cbAnswer2.Checked = true;
+            }
+            else if((int) targetRow["FLAG3"] == 1)
+            {
+                cbAnswer3.Checked = true;
+            }
             Application.DoEvents();
         }
 
@@ -122,6 +169,7 @@ namespace DriverLicense
             myCommand = new SqlCommand("delete from QUESTION where ID_QUESTION = '" + index, cnn);            
             myCommand.ExecuteNonQuery();
             cnn.Close();
+            reset();
             autoSortID();
         }
 
@@ -130,11 +178,69 @@ namespace DriverLicense
             int count = countRowQuestion();
             count++;
             cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
-            myCommand = new SqlCommand("insert into QUESTION (ID_QUESTION,CONTENT_QUESTION) values('" + count +"','" + tbQuestion.Text + "')", cnn);
             cnn.Open();
-            myCommand.ExecuteNonQuery();//ko tra ve chi thuc hien
+            
+            if(cbAnwser1.Checked == true)
+            {
+                myCommand = new SqlCommand("insert into QUESTION (ID_QUESTION,CONTENT_QUESTION) values('" + count + "','" + tbQuestion.Text + "')", cnn);
+                myCommand.ExecuteNonQuery();//ko tra ve chi thuc hien
+
+                myCommand = new SqlCommand("insert into ANSWER_1 (IDQUESTION,ANSWER1,FLAG1) values('" + count + "','" + tbAnswer1.Text + "','" + 1 + "')", cnn);                
+                myCommand.ExecuteNonQuery();//ko tra ve chi thuc hien
+
+                myCommand = new SqlCommand("insert into ANSWER_2 (IDQUESTION,ANSWER2,FLAG2) values('" + count + "','" + tbAnswer2.Text + "','" + 0 + "')", cnn);
+                myCommand.ExecuteNonQuery();//ko tra ve chi thuc hien
+
+                myCommand = new SqlCommand("insert into ANSWER_3 (IDQUESTION,ANSWER3,FLAG3) values('" + count + "','" + tbAnswer3.Text + "','" + 0 + "')", cnn);
+                myCommand.ExecuteNonQuery();//ko tra ve chi thuc hien
+            }
+            else if(cbAnswer2.Checked == true)
+            {
+                myCommand = new SqlCommand("insert into QUESTION (ID_QUESTION,CONTENT_QUESTION) values('" + count + "','" + tbQuestion.Text + "')", cnn);
+                myCommand.ExecuteNonQuery();//ko tra ve chi thuc hien
+
+                myCommand = new SqlCommand("insert into ANSWER_1 (IDQUESTION,ANSWER1,FLAG1) values('" + count + "','" + tbAnswer1.Text + "','" + 0 + "')", cnn);
+                myCommand.ExecuteNonQuery();
+
+                myCommand = new SqlCommand("insert into ANSWER_2 (IDQUESTION,ANSWER2,FLAG2) values('" + count + "','" + tbAnswer2.Text + "','" + 1 + "')", cnn);
+                myCommand.ExecuteNonQuery();
+
+                myCommand = new SqlCommand("insert into ANSWER_3 (IDQUESTION,ANSWER3,FLAG3) values('" + count + "','" + tbAnswer3.Text + "','" + 0 + "')", cnn);
+                myCommand.ExecuteNonQuery();
+            }
+            else if(cbAnswer3.Checked == true)
+            {
+                myCommand = new SqlCommand("insert into QUESTION (ID_QUESTION,CONTENT_QUESTION) values('" + count + "','" + tbQuestion.Text + "')", cnn);
+                myCommand.ExecuteNonQuery();//ko tra ve chi thuc hien
+
+                myCommand = new SqlCommand("insert into ANSWER_1 (IDQUESTION,ANSWER1,FLAG1) values ('" + count + "','" + tbAnswer1.Text + "','" + 0 +"')", cnn);
+                myCommand.ExecuteNonQuery();
+
+                myCommand = new SqlCommand("insert into ANSWER_2 (IDQUESTION,ANSWER2,FLAG2) values ('" + count + "','" + tbAnswer2.Text + "','" + 0 +"')", cnn);
+                myCommand.ExecuteNonQuery();
+
+                myCommand = new SqlCommand("insert into ANSWER_3 (IDQUESTION,ANSWER3,FLAG3) values ('" + count + "','" + tbAnswer3.Text + "','" + 1 + "')", cnn);
+                myCommand.ExecuteNonQuery();
+            }
+            else
+            {
+                MessageBox.Show("please, Stick one checkbox that is correct Answer");
+            }
+            
             cnn.Close();
+            reset();
             loadQuestion();
+        }
+
+        private void reset()
+        {
+            tbQuestion.Text = "";
+            tbAnswer1.Text = "";
+            tbAnswer2.Text = "";
+            tbAnswer3.Text = "";
+            cbAnwser1.Checked = false;
+            cbAnswer2.Checked = false;
+            cbAnswer3.Checked = false;
         }
         
         private int countRowQuestion()
@@ -147,6 +253,7 @@ namespace DriverLicense
             dataTable = new DataTable();
             myAdapter.Fill(dataTable);
             count = dataTable.Rows.Count;
+            cnn.Close();
             return count;
         }
 
@@ -208,6 +315,7 @@ namespace DriverLicense
             cnn.Open();
             myCommand = new SqlCommand("delete from ADMINISTRATOR where USER_ID = '" + tbUser.Text, cnn);
             myCommand.ExecuteNonQuery();
+            cnn.Close();
         }
 
         private void btNewUser_Click(object sender, EventArgs e)
