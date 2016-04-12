@@ -40,8 +40,8 @@
             this.ManageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.llbSkip = new System.Windows.Forms.LinkLabel();
-            this.btnNext = new System.Windows.Forms.Button();
+            this.llbSignSkip = new System.Windows.Forms.LinkLabel();
+            this.btnSignNext = new System.Windows.Forms.Button();
             this.pnSigns = new System.Windows.Forms.Panel();
             this.cbSign3 = new System.Windows.Forms.CheckBox();
             this.cbSign2 = new System.Windows.Forms.CheckBox();
@@ -149,30 +149,32 @@
             this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem1.Text = "About";
             // 
-            // llbSkip
+            // llbSignSkip
             // 
-            this.llbSkip.AutoSize = true;
-            this.llbSkip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llbSkip.Location = new System.Drawing.Point(206, 485);
-            this.llbSkip.Name = "llbSkip";
-            this.llbSkip.Size = new System.Drawing.Size(66, 20);
-            this.llbSkip.TabIndex = 8;
-            this.llbSkip.TabStop = true;
-            this.llbSkip.Text = "Skip  >>";
-            this.llbSkip.Visible = false;
+            this.llbSignSkip.AutoSize = true;
+            this.llbSignSkip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llbSignSkip.Location = new System.Drawing.Point(463, 492);
+            this.llbSignSkip.Name = "llbSignSkip";
+            this.llbSignSkip.Size = new System.Drawing.Size(66, 20);
+            this.llbSignSkip.TabIndex = 8;
+            this.llbSignSkip.TabStop = true;
+            this.llbSignSkip.Text = "Skip  >>";
+            this.llbSignSkip.Visible = false;
+            this.llbSignSkip.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbSignSkip_LinkClicked);
             // 
-            // btnNext
+            // btnSignNext
             // 
-            this.btnNext.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnNext.Location = new System.Drawing.Point(18, 463);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(152, 42);
-            this.btnNext.TabIndex = 7;
-            this.btnNext.Text = "NEXT";
-            this.btnNext.UseVisualStyleBackColor = false;
-            this.btnNext.Visible = false;
+            this.btnSignNext.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnSignNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSignNext.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSignNext.Location = new System.Drawing.Point(275, 470);
+            this.btnSignNext.Name = "btnSignNext";
+            this.btnSignNext.Size = new System.Drawing.Size(152, 42);
+            this.btnSignNext.TabIndex = 7;
+            this.btnSignNext.Text = "NEXT";
+            this.btnSignNext.UseVisualStyleBackColor = false;
+            this.btnSignNext.Visible = false;
+            this.btnSignNext.Click += new System.EventHandler(this.btnSignNext_Click);
             // 
             // pnSigns
             // 
@@ -254,6 +256,7 @@
             this.cbbSigns.Name = "cbbSigns";
             this.cbbSigns.Size = new System.Drawing.Size(62, 21);
             this.cbbSigns.TabIndex = 0;
+            this.cbbSigns.SelectedIndexChanged += new System.EventHandler(this.cbbSigns_SelectedIndexChanged);
             // 
             // openFileDialog1
             // 
@@ -265,8 +268,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(966, 517);
             this.Controls.Add(this.pnSigns);
-            this.Controls.Add(this.llbSkip);
-            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.llbSignSkip);
+            this.Controls.Add(this.btnSignNext);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
@@ -298,8 +301,8 @@
         private System.Windows.Forms.ToolStripMenuItem ManageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
-        private System.Windows.Forms.LinkLabel llbSkip;
-        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.LinkLabel llbSignSkip;
+        private System.Windows.Forms.Button btnSignNext;
         private System.Windows.Forms.Panel pnSigns;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbbSigns;

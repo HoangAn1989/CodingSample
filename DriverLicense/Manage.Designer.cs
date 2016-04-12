@@ -407,7 +407,7 @@
             // 
             // gridViewSign
             // 
-            this.gridViewSign.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridViewSign.ColumnHeadersHeight = 50;
             this.gridViewSign.Location = new System.Drawing.Point(6, 19);
             this.gridViewSign.Name = "gridViewSign";
             this.gridViewSign.Size = new System.Drawing.Size(439, 408);

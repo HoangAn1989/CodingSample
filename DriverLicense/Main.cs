@@ -298,7 +298,7 @@ namespace DriverLicense
 
         private void btnNext_Click(object sender, EventArgs e)
         {            
-            if(_count < 25)
+            if(_count < amountQuestion)
             {
                 cbbNumber.SelectedIndex = _count;
                 processNextClick();
@@ -308,7 +308,7 @@ namespace DriverLicense
                     llbSkip.Visible = false;
                 }
             }
-            else if(_count == 25)
+            else if (_count == amountQuestion)
             {
                 _count = 26;
                 processNextClick();
