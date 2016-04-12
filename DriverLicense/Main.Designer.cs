@@ -41,6 +41,10 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pnTest = new System.Windows.Forms.Panel();
+            this.pnResult = new System.Windows.Forms.Panel();
+            this.lblResult = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.lbxResult = new System.Windows.Forms.ListBox();
             this.cbbNumber = new System.Windows.Forms.ComboBox();
             this.lbl = new System.Windows.Forms.Label();
             this.rdbAnswer3 = new System.Windows.Forms.RadioButton();
@@ -50,20 +54,21 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.llbSkip = new System.Windows.Forms.LinkLabel();
-            this.pnResult = new System.Windows.Forms.Panel();
-            this.lblResult = new System.Windows.Forms.Label();
-            this.lbl1 = new System.Windows.Forms.Label();
-            this.lbxResult = new System.Windows.Forms.ListBox();
             this.pnLogin = new System.Windows.Forms.Panel();
+            this.llbBack = new System.Windows.Forms.LinkLabel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.pnStarting = new System.Windows.Forms.Panel();
+            this.cbTrafficSigns = new System.Windows.Forms.CheckBox();
+            this.cbQuestion = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.pnTest.SuspendLayout();
             this.pnResult.SuspendLayout();
             this.pnLogin.SuspendLayout();
+            this.pnStarting.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -163,17 +168,64 @@
             // 
             // pnTest
             // 
+            this.pnTest.Controls.Add(this.pnResult);
             this.pnTest.Controls.Add(this.cbbNumber);
             this.pnTest.Controls.Add(this.lbl);
             this.pnTest.Controls.Add(this.rdbAnswer3);
             this.pnTest.Controls.Add(this.rdbAnswer2);
             this.pnTest.Controls.Add(this.rdbAnswer1);
             this.pnTest.Controls.Add(this.tbQuestion);
-            this.pnTest.Location = new System.Drawing.Point(12, 95);
+            this.pnTest.Location = new System.Drawing.Point(12, 85);
             this.pnTest.Name = "pnTest";
-            this.pnTest.Size = new System.Drawing.Size(942, 347);
+            this.pnTest.Size = new System.Drawing.Size(942, 349);
             this.pnTest.TabIndex = 4;
             this.pnTest.Visible = false;
+            // 
+            // pnResult
+            // 
+            this.pnResult.Controls.Add(this.lblResult);
+            this.pnResult.Controls.Add(this.lbl1);
+            this.pnResult.Controls.Add(this.lbxResult);
+            this.pnResult.Location = new System.Drawing.Point(7, 6);
+            this.pnResult.Name = "pnResult";
+            this.pnResult.Size = new System.Drawing.Size(922, 338);
+            this.pnResult.TabIndex = 10;
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.Location = new System.Drawing.Point(78, 13);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(52, 17);
+            this.lblResult.TabIndex = 2;
+            this.lblResult.Text = "label1";
+            this.lblResult.Visible = false;
+            // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl1.Location = new System.Drawing.Point(3, 11);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(69, 20);
+            this.lbl1.TabIndex = 1;
+            this.lbl1.Text = "ReSult:";
+            this.lbl1.Visible = false;
+            // 
+            // lbxResult
+            // 
+            this.lbxResult.BackColor = System.Drawing.SystemColors.Control;
+            this.lbxResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbxResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbxResult.FormattingEnabled = true;
+            this.lbxResult.ItemHeight = 16;
+            this.lbxResult.Location = new System.Drawing.Point(6, 38);
+            this.lbxResult.Name = "lbxResult";
+            this.lbxResult.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lbxResult.Size = new System.Drawing.Size(919, 304);
+            this.lbxResult.TabIndex = 0;
+            this.lbxResult.Visible = false;
             // 
             // cbbNumber
             // 
@@ -252,7 +304,9 @@
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "START";
             this.btnStart.UseVisualStyleBackColor = false;
-            this.btnStart.Click += new System.EventHandler(this.button2_Click);
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            this.btnStart.MouseLeave += new System.EventHandler(this.btnStart_MouseLeave);
+            this.btnStart.MouseHover += new System.EventHandler(this.btnStart_MouseHover);
             // 
             // btnNext
             // 
@@ -267,6 +321,8 @@
             this.btnNext.UseVisualStyleBackColor = false;
             this.btnNext.Visible = false;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            this.btnNext.MouseLeave += new System.EventHandler(this.btnNext_MouseLeave);
+            this.btnNext.MouseHover += new System.EventHandler(this.btnNext_MouseHover);
             // 
             // llbSkip
             // 
@@ -280,66 +336,33 @@
             this.llbSkip.Text = "Skip  >>";
             this.llbSkip.Visible = false;
             this.llbSkip.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbSkip_LinkClicked);
-            // 
-            // pnResult
-            // 
-            this.pnResult.Controls.Add(this.pnLogin);
-            this.pnResult.Controls.Add(this.lblResult);
-            this.pnResult.Controls.Add(this.lbl1);
-            this.pnResult.Controls.Add(this.lbxResult);
-            this.pnResult.Location = new System.Drawing.Point(15, 95);
-            this.pnResult.Name = "pnResult";
-            this.pnResult.Size = new System.Drawing.Size(928, 344);
-            this.pnResult.TabIndex = 10;
-            // 
-            // lblResult
-            // 
-            this.lblResult.AutoSize = true;
-            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResult.Location = new System.Drawing.Point(78, 13);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(52, 17);
-            this.lblResult.TabIndex = 2;
-            this.lblResult.Text = "label1";
-            this.lblResult.Visible = false;
-            // 
-            // lbl1
-            // 
-            this.lbl1.AutoSize = true;
-            this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl1.Location = new System.Drawing.Point(3, 11);
-            this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(69, 20);
-            this.lbl1.TabIndex = 1;
-            this.lbl1.Text = "ReSult:";
-            this.lbl1.Visible = false;
-            // 
-            // lbxResult
-            // 
-            this.lbxResult.BackColor = System.Drawing.SystemColors.Control;
-            this.lbxResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbxResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbxResult.FormattingEnabled = true;
-            this.lbxResult.ItemHeight = 16;
-            this.lbxResult.Location = new System.Drawing.Point(6, 38);
-            this.lbxResult.Name = "lbxResult";
-            this.lbxResult.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbxResult.Size = new System.Drawing.Size(919, 304);
-            this.lbxResult.TabIndex = 0;
-            this.lbxResult.Visible = false;
+            this.llbSkip.MouseLeave += new System.EventHandler(this.llbSkip_MouseLeave);
+            this.llbSkip.MouseHover += new System.EventHandler(this.llbSkip_MouseHover);
             // 
             // pnLogin
             // 
+            this.pnLogin.Controls.Add(this.llbBack);
             this.pnLogin.Controls.Add(this.btnLogin);
             this.pnLogin.Controls.Add(this.tbPassword);
             this.pnLogin.Controls.Add(this.tbUsername);
             this.pnLogin.Controls.Add(this.label1);
             this.pnLogin.Controls.Add(this.label3);
-            this.pnLogin.Location = new System.Drawing.Point(136, 3);
+            this.pnLogin.Location = new System.Drawing.Point(199, 82);
             this.pnLogin.Name = "pnLogin";
-            this.pnLogin.Size = new System.Drawing.Size(649, 338);
+            this.pnLogin.Size = new System.Drawing.Size(486, 214);
             this.pnLogin.TabIndex = 3;
             this.pnLogin.Visible = false;
+            // 
+            // llbBack
+            // 
+            this.llbBack.AutoSize = true;
+            this.llbBack.Location = new System.Drawing.Point(164, 123);
+            this.llbBack.Name = "llbBack";
+            this.llbBack.Size = new System.Drawing.Size(47, 13);
+            this.llbBack.TabIndex = 6;
+            this.llbBack.TabStop = true;
+            this.llbBack.Text = "<< Back";
+            this.llbBack.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbBack_LinkClicked);
             // 
             // btnLogin
             // 
@@ -353,6 +376,8 @@
             this.btnLogin.Text = "Log in";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.MouseLeave += new System.EventHandler(this.btnLogin_MouseLeave);
+            this.btnLogin.MouseHover += new System.EventHandler(this.btnLogin_MouseHover);
             // 
             // tbPassword
             // 
@@ -388,10 +413,42 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "UserName:";
             // 
+            // pnStarting
+            // 
+            this.pnStarting.Controls.Add(this.cbTrafficSigns);
+            this.pnStarting.Controls.Add(this.cbQuestion);
+            this.pnStarting.Location = new System.Drawing.Point(25, 82);
+            this.pnStarting.Name = "pnStarting";
+            this.pnStarting.Size = new System.Drawing.Size(916, 366);
+            this.pnStarting.TabIndex = 3;
+            // 
+            // cbTrafficSigns
+            // 
+            this.cbTrafficSigns.AutoSize = true;
+            this.cbTrafficSigns.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTrafficSigns.Location = new System.Drawing.Point(232, 115);
+            this.cbTrafficSigns.Name = "cbTrafficSigns";
+            this.cbTrafficSigns.Size = new System.Drawing.Size(195, 24);
+            this.cbTrafficSigns.TabIndex = 1;
+            this.cbTrafficSigns.Text = "Traffic Signs (Biển Báo)";
+            this.cbTrafficSigns.UseVisualStyleBackColor = true;
+            // 
+            // cbQuestion
+            // 
+            this.cbQuestion.AutoSize = true;
+            this.cbQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbQuestion.Location = new System.Drawing.Point(232, 44);
+            this.cbQuestion.Name = "cbQuestion";
+            this.cbQuestion.Size = new System.Drawing.Size(163, 24);
+            this.cbQuestion.TabIndex = 0;
+            this.cbQuestion.Text = "Question (Câu Hỏi)";
+            this.cbQuestion.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.ClientSize = new System.Drawing.Size(966, 517);
-            this.Controls.Add(this.pnResult);
+            this.Controls.Add(this.pnStarting);
+            this.Controls.Add(this.pnLogin);
             this.Controls.Add(this.llbSkip);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnStart);
@@ -410,6 +467,8 @@
             this.pnResult.PerformLayout();
             this.pnLogin.ResumeLayout(false);
             this.pnLogin.PerformLayout();
+            this.pnStarting.ResumeLayout(false);
+            this.pnStarting.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -450,6 +509,10 @@
         private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.LinkLabel llbBack;
+        private System.Windows.Forms.Panel pnStarting;
+        private System.Windows.Forms.CheckBox cbTrafficSigns;
+        private System.Windows.Forms.CheckBox cbQuestion;
     }
 }
 

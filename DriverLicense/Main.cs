@@ -63,24 +63,6 @@ namespace DriverLicense
         private void connect()
         {
             cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
-        }
-
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {            
-            pnTest.Visible = true;
-            btnStart.Visible = false;
-            btnNext.Visible = true;
-            llbSkip.Visible = true;
-            pnResult.Visible = false;
-            contentQuestionList = new string[amountQuestion];
-            contetnRightAnswerList = new string[amountQuestion];
-            contentWrongAnswerList = new string[amountQuestion];
-            getAllQuestion();
-            cbbNumber.SelectedIndex = 0;
-            showContent();
-            
         }      
         
 
@@ -99,7 +81,7 @@ namespace DriverLicense
             }
             realTestList = new ArrayList(amountQuestion);
             int getID;
-            for(int j=0; j<25; j++)
+            for (int j = 0; j < amountQuestion; j++)
             {
                 int numberRandom = _Random.Next(idQuestionList.Count);
                 getID = (int)idQuestionList[numberRandom];
@@ -146,7 +128,7 @@ namespace DriverLicense
             cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
             int flag;
             SqlCommand command = new SqlCommand();
-            command.CommandText = "Select FLAG from ANSWER_1 where IDQUESTION = @id";
+            command.CommandText = "Select FLAG1 from ANSWER_1 where IDQUESTION = @id";
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("@id", id);
             command.Connection = cnn;
@@ -176,7 +158,7 @@ namespace DriverLicense
             cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
             int flag;
             SqlCommand command = new SqlCommand();
-            command.CommandText = "Select FLAG from ANSWER_2 where IDQUESTION = @id";
+            command.CommandText = "Select FLAG2 from ANSWER_2 where IDQUESTION = @id";
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("@id", id);
             command.Connection = cnn;
@@ -206,7 +188,7 @@ namespace DriverLicense
             cnn = new SqlConnection("server=FAMILY-PC; database=DriverLicenseTest; integrated security= true");
             int flag;
             SqlCommand command = new SqlCommand();
-            command.CommandText = "Select FLAG from ANSWER_3 where IDQUESTION = @id";
+            command.CommandText = "Select FLAG3 from ANSWER_3 where IDQUESTION = @id";
             command.CommandType = CommandType.Text;
             command.Parameters.AddWithValue("@id", id);
             command.Connection = cnn;
@@ -383,6 +365,7 @@ namespace DriverLicense
             {
                 llbSkip.Visible = true;
             }
+           
         }       
 
         private void showResult()
@@ -414,7 +397,8 @@ namespace DriverLicense
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pnLogin.Visible = true;
-            
+            btnStart.Visible = false;
+            pnStarting.Visible = false;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -461,7 +445,81 @@ namespace DriverLicense
             Manage mn = new Manage();
             mn.userName = userName;
             mn.Show();
-                
+
+        }
+
+        private void llbBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            pnLogin.Visible = false;
+            pnTest.Visible = true;
+            btnStart.Visible = true;
+        }
+
+        private void btnLogin_MouseHover(object sender, EventArgs e)
+        {
+            btnLogin.BackColor = Color.DarkGreen;
+        }
+
+        private void btnLogin_MouseLeave(object sender, EventArgs e)
+        {
+            btnLogin.BackColor = Color.LimeGreen;
+        }
+
+        private void btnStart_MouseHover(object sender, EventArgs e)
+        {
+            btnStart.BackColor = Color.DarkGreen;
+        }
+
+        private void btnStart_MouseLeave(object sender, EventArgs e)
+        {
+            btnStart.BackColor = Color.LimeGreen;
+
+        }
+
+        private void btnNext_MouseHover(object sender, EventArgs e)
+        {
+            btnNext.BackColor = Color.DarkGreen;
+        }
+
+        private void btnNext_MouseLeave(object sender, EventArgs e)
+        {
+            btnNext.BackColor = Color.LimeGreen;
+        }
+
+        private void llbSkip_MouseHover(object sender, EventArgs e)
+        {
+            llbSkip.LinkColor = Color.Black;
+        }
+
+        private void llbSkip_MouseLeave(object sender, EventArgs e)
+        {
+            llbSkip.LinkColor = Color.Blue;
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            if(cbQuestion.Checked == true)
+            {
+                pnStarting.Visible = false;
+                pnTest.Visible = true;
+                btnStart.Visible = false;
+                btnNext.Visible = true;
+                llbSkip.Visible = true;
+                pnResult.Visible = false;
+                contentQuestionList = new string[amountQuestion];
+                contetnRightAnswerList = new string[amountQuestion];
+                contentWrongAnswerList = new string[amountQuestion];
+                getAllQuestion();
+                cbbNumber.SelectedIndex = 0;
+                showContent();
+            }
+            else if(cbTrafficSigns.Checked == true)
+            {
+                this.Hide();
+                TrafficSigns ts = new TrafficSigns();
+                ts.Show();
+            }
+            
         }
         
         
